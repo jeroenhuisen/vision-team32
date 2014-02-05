@@ -1,0 +1,139 @@
+\hypertarget{class_base_timer}{\section{Base\-Timer Class Reference}
+\label{class_base_timer}\index{Base\-Timer@{Base\-Timer}}
+}
+
+
+{\ttfamily \#include $<$basetimer.\-h$>$}
+
+Inheritance diagram for Base\-Timer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_timer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_base_timer_a1a03059373391ed51149d21182db8fa4}{Base\-Timer} ()
+\item 
+bool \hyperlink{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}{start} ()
+\item 
+bool \hyperlink{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}{stop} ()
+\item 
+void \hyperlink{class_base_timer_a91b31d11717b29761f38e8ea43d39063}{reset} ()
+\item 
+unsigned long long \hyperlink{class_base_timer_ad5d4815b9a6ca8042316fccaef433647}{elapsed\-Micro\-Seconds} ()
+\item 
+unsigned long long \hyperlink{class_base_timer_a0d2fa9af0f004932607be09748265db8}{elapsed\-Milli\-Seconds} ()
+\item 
+double \hyperlink{class_base_timer_aaa9c1ff59a32c340bf0244df37ad5a86}{elapsed\-Seconds} ()
+\item 
+void \hyperlink{class_base_timer_a078e5499b51d151695649dc333efdde6}{store} (std\-::string label)
+\item 
+bool \hyperlink{class_base_timer_a97047266ceaae87631d025957d3dffc8}{save} (std\-::string filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the main class of the library. This class is responsible for all the timing. It uses the High-\/\-Performance counters of Windows. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_base_timer_a1a03059373391ed51149d21182db8fa4}{\index{Base\-Timer@{Base\-Timer}!Base\-Timer@{Base\-Timer}}
+\index{Base\-Timer@{Base\-Timer}!BaseTimer@{Base\-Timer}}
+\subsubsection[{Base\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Timer\-::\-Base\-Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_a1a03059373391ed51149d21182db8fa4}
+The main constructor of the \hyperlink{class_base_timer}{Base\-Timer} class. This initializes everything to zero. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_base_timer_ad5d4815b9a6ca8042316fccaef433647}{\index{Base\-Timer@{Base\-Timer}!elapsed\-Micro\-Seconds@{elapsed\-Micro\-Seconds}}
+\index{elapsed\-Micro\-Seconds@{elapsed\-Micro\-Seconds}!BaseTimer@{Base\-Timer}}
+\subsubsection[{elapsed\-Micro\-Seconds}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long Base\-Timer\-::elapsed\-Micro\-Seconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_ad5d4815b9a6ca8042316fccaef433647}
+This function will calculate the duration of the last timing. \begin{DoxyReturn}{Returns}
+The time in microseconds between the \hyperlink{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}{start()} and the \hyperlink{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}{stop()} 
+\end{DoxyReturn}
+\hypertarget{class_base_timer_a0d2fa9af0f004932607be09748265db8}{\index{Base\-Timer@{Base\-Timer}!elapsed\-Milli\-Seconds@{elapsed\-Milli\-Seconds}}
+\index{elapsed\-Milli\-Seconds@{elapsed\-Milli\-Seconds}!BaseTimer@{Base\-Timer}}
+\subsubsection[{elapsed\-Milli\-Seconds}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long Base\-Timer\-::elapsed\-Milli\-Seconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_a0d2fa9af0f004932607be09748265db8}
+This function will calculate the duration of the last timing. \begin{DoxyReturn}{Returns}
+The time in milliseconds between the \hyperlink{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}{start()} and the \hyperlink{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}{stop()} 
+\end{DoxyReturn}
+\hypertarget{class_base_timer_aaa9c1ff59a32c340bf0244df37ad5a86}{\index{Base\-Timer@{Base\-Timer}!elapsed\-Seconds@{elapsed\-Seconds}}
+\index{elapsed\-Seconds@{elapsed\-Seconds}!BaseTimer@{Base\-Timer}}
+\subsubsection[{elapsed\-Seconds}]{\setlength{\rightskip}{0pt plus 5cm}double Base\-Timer\-::elapsed\-Seconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_aaa9c1ff59a32c340bf0244df37ad5a86}
+This function will calculate the duration of the last timing. \begin{DoxyReturn}{Returns}
+The time in seconds between the \hyperlink{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}{start()} and the \hyperlink{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}{stop()} 
+\end{DoxyReturn}
+\hypertarget{class_base_timer_a91b31d11717b29761f38e8ea43d39063}{\index{Base\-Timer@{Base\-Timer}!reset@{reset}}
+\index{reset@{reset}!BaseTimer@{Base\-Timer}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Timer\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_a91b31d11717b29761f38e8ea43d39063}
+This resets all the data (except the stored values) to zero. After this call you can perform a new timing by calling the \hyperlink{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}{start()} and \hyperlink{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}{stop()} functions. \hypertarget{class_base_timer_a97047266ceaae87631d025957d3dffc8}{\index{Base\-Timer@{Base\-Timer}!save@{save}}
+\index{save@{save}!BaseTimer@{Base\-Timer}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Timer\-::save (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_a97047266ceaae87631d025957d3dffc8}
+This will save all the stored timings into a single file with the filename specified in the paramater. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & The filename of the file where the stored values will be saved. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}{\index{Base\-Timer@{Base\-Timer}!start@{start}}
+\index{start@{start}!BaseTimer@{Base\-Timer}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Timer\-::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_ad1a4dc398bd40b4c19bb9f5687358e94}
+This will start a timing. If a timing has already been started, the function will return false. \begin{DoxyReturn}{Returns}
+true is timing has started, false is a timing has already been started. 
+\end{DoxyReturn}
+\hypertarget{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}{\index{Base\-Timer@{Base\-Timer}!stop@{stop}}
+\index{stop@{stop}!BaseTimer@{Base\-Timer}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}bool Base\-Timer\-::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_ae0ad1c2cc4decd0e03149eb514edcaa6}
+This will stop a timing. If a timing was not started, the function will return false. \begin{DoxyReturn}{Returns}
+true is timing has stopped, false is a timing was not started. 
+\end{DoxyReturn}
+\hypertarget{class_base_timer_a078e5499b51d151695649dc333efdde6}{\index{Base\-Timer@{Base\-Timer}!store@{store}}
+\index{store@{store}!BaseTimer@{Base\-Timer}}
+\subsubsection[{store}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Timer\-::store (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{label}
+\end{DoxyParamCaption}
+)}}\label{class_base_timer_a078e5499b51d151695649dc333efdde6}
+The timer is able to store multiple timings. To store the last timing you call this function with a label of the timing as the argument. If the label already exists it will overwrite that value, the label should therefore be unique
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & The unique label for the last timing \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Timer/basetimer.\-h\item 
+Timer/basetimer.\-cpp\end{DoxyCompactItemize}

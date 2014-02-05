@@ -1,0 +1,62 @@
+\hypertarget{class_exec_timer}{\section{Exec\-Timer Class Reference}
+\label{class_exec_timer}\index{Exec\-Timer@{Exec\-Timer}}
+}
+
+
+{\ttfamily \#include $<$exectimer.\-h$>$}
+
+Inheritance diagram for Exec\-Timer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_exec_timer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_exec_timer_a7d5b31a4a84256375e67ab52f943fbd9}{Exec\-Timer} ()
+\item 
+bool \hyperlink{class_exec_timer_a2ba852cb439905be8e7f4e9cedf753c3}{run} (std\-::string cmd, bool resout)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to time a command. The command can be run using the function \hyperlink{class_exec_timer_a2ba852cb439905be8e7f4e9cedf753c3}{run()}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_exec_timer_a7d5b31a4a84256375e67ab52f943fbd9}{\index{Exec\-Timer@{Exec\-Timer}!Exec\-Timer@{Exec\-Timer}}
+\index{Exec\-Timer@{Exec\-Timer}!ExecTimer@{Exec\-Timer}}
+\subsubsection[{Exec\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}Exec\-Timer\-::\-Exec\-Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_exec_timer_a7d5b31a4a84256375e67ab52f943fbd9}
+The default constructor which initializes everything to zero. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_exec_timer_a2ba852cb439905be8e7f4e9cedf753c3}{\index{Exec\-Timer@{Exec\-Timer}!run@{run}}
+\index{run@{run}!ExecTimer@{Exec\-Timer}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}bool Exec\-Timer\-::run (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{cmd, }
+\item[{bool}]{resout}
+\end{DoxyParamCaption}
+)}}\label{class_exec_timer_a2ba852cb439905be8e7f4e9cedf753c3}
+This function will time the execution of the command specified in the parameter of this function. This command can contain arguments needed for the execution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & The command to be executed. \\
+\hline
+{\em resout} & A boolean indicating whether or not the results from the command should be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the program was able to execute, false if the program did not execute properly. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Timer/exectimer.\-h\item 
+Timer/exectimer.\-cpp\end{DoxyCompactItemize}

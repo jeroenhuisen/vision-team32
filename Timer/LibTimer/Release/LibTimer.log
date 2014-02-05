@@ -1,0 +1,15 @@
+﻿Build started 2/1/2014 9:20:36 PM.
+     1>Project "C:\Users\arno\Documents\Visual Studio 2013\Projects\Timer\LibTimer\LibTimer.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Timer\basetimer.cpp ..\Timer\exectimer.cpp
+         basetimer.cpp
+         exectimer.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\arno\Documents\Visual Studio 2013\Projects\Timer\Release\LibTimer.lib" /NOLOGO /LTCG Release\basetimer.obj
+         Release\exectimer.obj
+         LibTimer.vcxproj -> C:\Users\arno\Documents\Visual Studio 2013\Projects\Timer\Release\LibTimer.lib
+     1>Done Building Project "C:\Users\arno\Documents\Visual Studio 2013\Projects\Timer\LibTimer\LibTimer.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.56
