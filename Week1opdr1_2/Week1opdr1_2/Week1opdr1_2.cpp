@@ -1,4 +1,4 @@
-// Week1opdr1_1.cpp : Defines the entry point for the console application.
+// Week1opdr1_2.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -6,6 +6,15 @@
 #include <string>
 #include <fstream>
 using namespace std;
+
+class Week1opdr1_2{
+	unsigned char luminate[] = new char[0];
+	int arraylength=0;
+	char * editImage(char imagedata[], int size);
+	int main();
+
+};
+
 
 char* editImage(char imagedata[], int size){
 	unsigned char lum;
@@ -17,13 +26,14 @@ char* editImage(char imagedata[], int size){
 		imagedata[i] = lum;
 		imagedata[i + 1] = lum;
 		imagedata[i + 2] = lum;
+		luminate[arraylength] = lum;
 
 		//imagedata[i] = 200;
 	}
 	return imagedata;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
 	string filename;
 	bool filefound = false;
@@ -31,7 +41,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "Please give the filename of bmp file: ";
 		cin >> filename;
 		ifstream file;
-		if (filename[filename.length() - 4] == '.' && filename[filename.length() - 3] == 'b' && filename[filename.length() - 2] == 'm' && filename[filename.length()-1] == 'p'){
+		if (filename[filename.length() - 4] == '.' && filename[filename.length() - 3] == 'b' && filename[filename.length() - 2] == 'm' && filename[filename.length() - 1] == 'p'){
 			file.open(filename, ios::in | ios::binary | ios::ate);
 			if (file.is_open()){
 				filefound = true;
@@ -51,7 +61,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			else cout << "Unable to open file\n";
 		}
 		else cout << "not a .bmp file\n";
-		
+
 	}
 	system("pause");
 	return 0;
