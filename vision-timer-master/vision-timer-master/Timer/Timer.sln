@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timer", "Timer\Timer.vcxproj", "{E2A17127-D523-403E-B063-5C72CB836333}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibTimer", "LibTimer\LibTimer.vcxproj", "{4B19B37C-2E03-485E-A588-3D8DB5068BBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2A17127-D523-403E-B063-5C72CB836333}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E2A17127-D523-403E-B063-5C72CB836333}.Debug|Win32.Build.0 = Debug|Win32
+		{E2A17127-D523-403E-B063-5C72CB836333}.Release|Win32.ActiveCfg = Release|Win32
+		{E2A17127-D523-403E-B063-5C72CB836333}.Release|Win32.Build.0 = Release|Win32
+		{4B19B37C-2E03-485E-A588-3D8DB5068BBA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B19B37C-2E03-485E-A588-3D8DB5068BBA}.Debug|Win32.Build.0 = Debug|Win32
+		{4B19B37C-2E03-485E-A588-3D8DB5068BBA}.Release|Win32.ActiveCfg = Release|Win32
+		{4B19B37C-2E03-485E-A588-3D8DB5068BBA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
