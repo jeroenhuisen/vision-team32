@@ -7,29 +7,38 @@
 #include <fstream>
 using namespace std;
 
-class Week1opdr1_2{
-	unsigned char luminate[] = new char[0];
-	int arraylength=0;
-	char * editImage(char imagedata[], int size);
-	int main();
-
-};
-
+int *luminate;
+int arraylength = 0;
+int total = 0;
 
 char* editImage(char imagedata[], int size){
 	unsigned char lum;
 	unsigned char lum2;
+	luminate = new int[256];
+	for (int i = 0; i < 256; i++){
+		luminate[i] = 0;
+	}
 	for (int i = 1078; i < size; i += 3){
-		lum2 = (unsigned char)((0.3086 *imagedata[i]) + (0.6094 * imagedata[i + 1]) + (0.0820 * imagedata[i + 2]));
+		//lum2 = (unsigned char)((0.3086 *imagedata[i]) + (0.6094 * imagedata[i + 1]) + (0.0820 * imagedata[i + 2]));
 		lum = (unsigned char)(((unsigned char)imagedata[i] * 0.30) + ((unsigned char)imagedata[i + 1] * 0.59) + ((unsigned char)imagedata[i + 2] * 0.11));
 
 		imagedata[i] = lum;
 		imagedata[i + 1] = lum;
 		imagedata[i + 2] = lum;
-		luminate[arraylength] = lum;
-
+		luminate[lum]++;
+		arraylength++;
+		total += lum;
 		//imagedata[i] = 200;
 	}
+	cout << luminate[0];
+	ofstream greyfile;
+	greyfile.open("henk.csv", ios::out | ios::binary);
+	for (int i = 0; i < 256; i++){
+		float test = (float)luminate[i] / total;
+		greyfile <<"\""<< i<<"\","<< test<< "\n";
+	}
+	greyfile.close();
+
 	return imagedata;
 }
 
