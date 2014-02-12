@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 int *luminate;
@@ -15,8 +16,12 @@ char* editImage(char imagedata[], int size){
 	unsigned char lum;
 	unsigned char lum2;
 	luminate = new int[256];
+	int * luminate10 = new int[10];
 	for (int i = 0; i < 256; i++){
 		luminate[i] = 0;
+	}
+	for (int i = 0; i < 10; i++){
+		luminate10[i] = 0;
 	}
 	for (int i = 1078; i < size; i += 3){
 		//lum2 = (unsigned char)((0.3086 *imagedata[i]) + (0.6094 * imagedata[i + 1]) + (0.0820 * imagedata[i + 2]));
@@ -25,20 +30,27 @@ char* editImage(char imagedata[], int size){
 		imagedata[i] = lum;
 		imagedata[i + 1] = lum;
 		imagedata[i + 2] = lum;
+
 		luminate[lum]++;
+		luminate10[(int)((lum * 10) / 256)]++;
 		arraylength++;
-		total += lum;
+		total++;
 		//imagedata[i] = 200;
 	}
-	cout << luminate[0];
 	ofstream greyfile;
-	greyfile.open("henk.csv", ios::out | ios::binary);
+	greyfile.open("gray256.csv", ios::out | ios::binary);
 	for (int i = 0; i < 256; i++){
-		float test = (float)luminate[i] / total;
-		greyfile <<"\""<< i<<"\","<< test<< "\n";
+		double test = (double)((double)luminate[i] / ((double)total));
+		greyfile << i << "," << setprecision(10) <<fixed << showpoint << test << "\n";
 	}
 	greyfile.close();
-
+	ofstream greyfile1;
+	greyfile1.open("gray10.csv", ios::out | ios::binary);
+	for (int i = 0; i < 10; i++){
+		double test = (double)((double)luminate10[i] / ((double)total));
+		greyfile1 << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
+	}
+	greyfile1.close();
 	return imagedata;
 }
 
