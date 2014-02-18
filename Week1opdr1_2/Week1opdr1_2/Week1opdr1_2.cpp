@@ -1,11 +1,15 @@
 // Week1opdr1_2.cpp : Defines the entry point for the console application.
 //
 
+
 #include "stdafx.h"
+#include "basetimer.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <iomanip>
+
+
 using namespace std;
 
 int *luminate;
@@ -37,13 +41,13 @@ char* editImage(char imagedata[], int size){
 		total++;
 		//imagedata[i] = 200;
 	}
-	ofstream greyfile;
-	greyfile.open("gray256.csv", ios::out | ios::binary);
+	ofstream greyfilecsv;
+	greyfilecsv.open("gray256.csv", ios::out | ios::binary);
 	for (int i = 0; i < 256; i++){
 		double test = (double)((double)luminate[i] / ((double)total));
-		greyfile << i << "," << setprecision(10) <<fixed << showpoint << test << "\n";
+		greyfilecsv << i << "," << setprecision(10) <<fixed << showpoint << test << "\n";
 	}
-	greyfile.close();
+	greyfilecsv.close();
 	ofstream greyfile1;
 	greyfile1.open("gray10.csv", ios::out | ios::binary);
 	for (int i = 0; i < 10; i++){
@@ -65,6 +69,8 @@ int main()
 		if (filename[filename.length() - 4] == '.' && filename[filename.length() - 3] == 'b' && filename[filename.length() - 2] == 'm' && filename[filename.length() - 1] == 'p'){
 			file.open(filename, ios::in | ios::binary | ios::ate);
 			if (file.is_open()){
+				BaseTimer bt;
+				bt.start();
 				filefound = true;
 				int size = file.tellg();
 				cout << size << " groot is het bestand\n";
@@ -73,11 +79,18 @@ int main()
 				file.read(memblock, size);
 				file.close();
 				editImage(memblock, size);
-				ofstream greyfile;
+				cout<<("hoi");
+				/*ofstream greyfile;
 				greyfile.open("grey_" + filename, ios::out | ios::binary);
 				greyfile.write(memblock, size);
-				greyfile.close();
+				greyfile.close();*/
 				delete[] memblock;
+				cout << ("hoi");
+				bt.stop();
+				cout << ("hoi");
+				cout << bt.elapsedSeconds();
+				cout << ("hoi");
+				
 			}
 			else cout << "Unable to open file\n";
 		}
