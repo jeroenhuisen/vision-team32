@@ -10,6 +10,8 @@ Histogram::Histogram(CImg<unsigned char> image){
 }
 
 void Histogram::makeGray(){
+	histogram10 = new int[10];
+	histogram256 = new int[256];
 	for (int i = 0; i < 10; i++){
 		histogram10[i] = 0;
 	}
@@ -31,11 +33,11 @@ CImg<unsigned char> Histogram::getImage(){
 	return image;
 }
 
-unsigned char* Histogram::getHistogram256(){
+int* Histogram::getHistogram256(){
 	return histogram256;
 }
 
-unsigned char* Histogram::getHistogram10(){
+int* Histogram::getHistogram10(){
 	return histogram10;
 }
 

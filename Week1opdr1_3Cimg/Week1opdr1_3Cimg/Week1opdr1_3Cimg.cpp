@@ -35,10 +35,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			image.save(newfilename.c_str());
 
 			int total = h.getTotal();
-			cout << total << "\n"
-			<< image.height()<<"\n"
-			<< image.width();
-			unsigned char * luminate256 = h.getHistogram256();
+			int * luminate256 = h.getHistogram256();
 			ofstream greyfilecsv;
 			greyfilecsv.open("gray256.csv", ios::out | ios::binary);
 			for (int i = 0; i < 256; i++){
@@ -47,13 +44,11 @@ int _tmain(int argc, _TCHAR* argv[])
 			}
 			greyfilecsv.close();
 
-			unsigned char * luminate10 = h.getHistogram10();
+			int * luminate10 = h.getHistogram10();
 			ofstream greyfilecsv1;
 			greyfilecsv1.open("gray10.csv", ios::out | ios::binary);
 			for (int i = 0; i < 10; i++){
-				cout << (int)luminate10[i] << "\n";
 				double test = (double)((double)luminate10[i] / ((double)total));
-				cout << i << "," << test << "\n";
 				greyfilecsv1 << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
 			}
 			greyfilecsv1.close();
