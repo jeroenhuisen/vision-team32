@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "Histogram.h"
 #include <iostream>
@@ -7,6 +6,7 @@ Histogram::Histogram(CImg<unsigned char> image){
 	Histogram::image = image;
 	total = image.height() * image.width();
 	makeGray();
+	equalizedImage = Histogram::image;
 }
 
 void Histogram::makeGray(){
@@ -16,7 +16,7 @@ void Histogram::makeGray(){
 		histogram10[i] = 0;
 	}
 	for (int i = 0; i < 256; i++){
-		histogram256[i] = 0;
+		histogram256	[i] = 0;
 	}
 	for (int r = 0; r < image.height(); r++){
 		for (int c = 0; c < image.width(); c++){
@@ -29,8 +29,34 @@ void Histogram::makeGray(){
 		}
 	}
 }
+
+void Histogram::equalize(){
+	// histogram[0..#grey_values] is normalized histogram 
+	
+	equalizedHistogram256 = new int[256];
+
+	double alpha = (double)255 / (double)total;
+	equalizedHistogram256[0] = alpha*histogram256[0];
+
+	for (int i = 1; i < 255; i++){
+		equalizedHistogram256[i] = equalizedHistogram256[i - 1] + alpha*histogram256[i];
+	}
+
+	for (int r = 0; r < image.height(); r++){
+		for (int c = 0; c < image.width(); c++){
+			equalizedImage(c, r, 0, 0) = equalizedHistogram256[image(c, r, 0, 0)];
+			equalizedImage(c, r, 0, 1) = equalizedHistogram256[image(c, r, 0, 1)];
+			equalizedImage(c, r, 0, 2) = equalizedHistogram256[image(c, r, 0, 2)];
+		}
+	}
+}
+
 CImg<unsigned char> Histogram::getImage(){
 	return image;
+}
+
+CImg<unsigned char> Histogram::getEqualizedImage(){
+	return equalizedImage;
 }
 
 int* Histogram::getHistogram256(){
@@ -39,6 +65,10 @@ int* Histogram::getHistogram256(){
 
 int* Histogram::getHistogram10(){
 	return histogram10;
+}
+
+int* Histogram::getEqualizedHistogram256(){
+	return equalizedHistogram256;
 }
 
 int Histogram::getTotal(){

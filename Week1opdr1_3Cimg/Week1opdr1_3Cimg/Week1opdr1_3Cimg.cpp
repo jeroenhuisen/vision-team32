@@ -55,6 +55,20 @@ int _tmain(int argc, _TCHAR* argv[])
 			
 
 			//CImgDisplay main_disp(image, filename.c_str());
+			h.equalize();
+			int * luminateEqualized256 = h.getEqualizedHistogram256();
+			ofstream greyfileEqualizedcsv;
+			greyfileEqualizedcsv.open("gray256Equalized.csv", ios::out | ios::binary);
+			for (int i = 0; i < 256; i++){
+				double test = (double)((double)luminateEqualized256[i] / ((double)total));
+				greyfileEqualizedcsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
+			}
+			greyfileEqualizedcsv.close();
+
+
+			CImg<unsigned char> equalizedImage = h.getEqualizedImage();
+			equalizedImage.save(("equalize_" + filename).c_str());
+
 			bt.stop();
 			cout << bt.elapsedSeconds();
 		}
