@@ -35,7 +35,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			Image img(image);
 			Histogram h(image);
 			h.makeHistogramRGB();
-			int total = image.height() * image.width();
+			/*int total = image.height() * image.width();
 			int* luminate10 = h.getHistogramRed10();
 			ofstream greyfilecsv;
 			greyfilecsv.open("HistogramRed10.csv", ios::out | ios::binary);
@@ -59,7 +59,10 @@ int _tmain(int argc, _TCHAR* argv[])
 				double test = (double)((double)luminate10[i] / ((double)total));
 				greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
 			}
-			greyfilecsv.close();
+			greyfilecsv.close();*/
+
+
+			h.saveHistogram(filename.c_str());
 
 			bt.stop();
 			cout << bt.elapsedSeconds();

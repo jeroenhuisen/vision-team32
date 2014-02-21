@@ -1,4 +1,7 @@
 #include "Cimg.h"
+#include <fstream>
+#include <iomanip>
+using namespace std;
 
 using namespace cimg_library;
 class Histogram{
@@ -17,7 +20,7 @@ private:
 
 public:
 	Histogram(CImg<unsigned char> image);
-	void makeRed();
+	//void makeRed();
 	void equalize();
 	int* getHistogram256();
 	int* getHistogram10();
@@ -27,6 +30,7 @@ public:
 	int* getEqualizedHistogram256();
 	int getTotal();
 	void makeHistogramRGB();
+	void saveHistogram(const char * filename);
 	CImg<unsigned char> getImage();
 	CImg<unsigned char> getEqualizedImage();
 };

@@ -2,6 +2,7 @@
 #include "Histogram.h"
 #include <iostream>
 
+
 Histogram::Histogram(CImg<unsigned char> image){
 	Histogram::image = image;
 	total = image.height() * image.width();
@@ -112,4 +113,39 @@ int* Histogram::getEqualizedHistogram256(){
 
 int Histogram::getTotal(){
 	return total;
+}
+
+void Histogram::saveHistogram(const char * filename){
+	ofstream greyfilecsv;
+	string redcsv = "HistogramRed10_";
+	redcsv += filename;
+	redcsv += ".csv";
+	greyfilecsv.open(redcsv, ios::out | ios::binary);
+	for (int i = 0; i < 10; i++){
+		double test = (double)((double)histogramRed10[i] / ((double)total));
+		greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
+	}
+	greyfilecsv.close();
+
+	string greencsv = "HistogramGreen10_";
+	greencsv += filename;
+	greencsv += ".csv";
+
+	greyfilecsv.open(greencsv, ios::out | ios::binary);
+	for (int i = 0; i < 10; i++){
+		double test = (double)((double)histogramGreen10[i] / ((double)total));
+		greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
+	}
+	greyfilecsv.close();
+
+	string bluecsv = "HistogramBlue10_";
+	bluecsv += filename;
+	bluecsv += ".csv";
+
+	greyfilecsv.open(bluecsv, ios::out | ios::binary);
+	for (int i = 0; i < 10; i++){
+		double test = (double)((double)histogramBlue10[i] / ((double)total));
+		greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
+	}
+	greyfilecsv.close();
 }
