@@ -81,12 +81,14 @@
   <ItemGroup>
     <ClInclude Include="basetimer.h" />
     <ClInclude Include="CImg.h" />
+    <ClInclude Include="MedianFilter.h" />
     <ClInclude Include="SaltAndPeppah.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basetimer.cpp" />
+    <ClCompile Include="MedianFilter.cpp" />
     <ClCompile Include="SaltAndPeppah.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -5,6 +5,7 @@
 #include "CImg.h"
 #include "basetimer.h"
 #include "SaltAndPeppah.h"
+#include "MedianFilter.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -34,6 +35,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			string newFilename = "noise_";
 			newFilename += filename;
 			sap.saveImage(newFilename.c_str());
+			CImg<unsigned char> noiseImage = sap.getImage();
+			MedianFilter mf(noiseImage, 3);
 			bt.stop();
 			cout << bt.elapsedSeconds();
 		}
