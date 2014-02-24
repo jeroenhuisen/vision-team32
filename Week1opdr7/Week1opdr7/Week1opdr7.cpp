@@ -52,6 +52,10 @@ int _tmain(int argc, _TCHAR* argv[])
 			maxf.saveImage(newmaxImage.c_str());
 			bt.stop();
 			cout << bt.elapsedSeconds();
+
+			for (int i = 0; i < 256; i++){
+				cout << i;
+			}
 		}
 		catch (CImgIOException cioe){
 			cerr << "Image not found\n";
