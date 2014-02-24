@@ -1,4 +1,4 @@
-// week1opdr6.cpp : Defines the entry point for the console application.
+// Week1opdr7.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -6,6 +6,8 @@
 #include "basetimer.h"
 #include "SaltAndPeppah.h"
 #include "MedianFilter.h"
+#include "MaxiumumFilter.h"
+#include "MiniumumFilter.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -30,7 +32,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			BaseTimer bt;
 			bt.start();
 			filefound = true;
-			
+
 			SaltAndPepper sap(image, 5);
 			string newFilename = "noise_";
 			newFilename += filename;
@@ -40,6 +42,14 @@ int _tmain(int argc, _TCHAR* argv[])
 			string newImage = "median_";
 			newImage += filename;
 			mf.saveImage(newImage.c_str());
+			MiniumumFilter minf(noiseImage, 3);
+			string newminImage = "min_";
+			newminImage += filename;
+			minf.saveImage(newminImage.c_str());
+			MaxiumumFilter maxf(noiseImage, 3);
+			string newmaxImage = "max_";
+			newmaxImage += filename;
+			maxf.saveImage(newmaxImage.c_str());
 			bt.stop();
 			cout << bt.elapsedSeconds();
 		}

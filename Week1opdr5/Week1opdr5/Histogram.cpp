@@ -59,7 +59,7 @@ int* Histogram::getHistogramBlue10(){
 	return histogramBlue10;
 }
 
-void Histogram::makeRed(){
+/*void Histogram::makeRed(){
 	for (int r = 0; r < image.height(); r++){
 		for (int c = 0; c < image.width(); c++){
 			//unsigned char lum = (unsigned char)(((unsigned char)image(c, r, 0, 0) * 0.30) + ((unsigned char)image(c, r, 0, 1) * 0.59) + ((unsigned char)image(c, r, 0, 2) * 0.11));
@@ -68,7 +68,7 @@ void Histogram::makeRed(){
 			image(c, r, 0, 2) = 0;
 		}
 	}
-}
+}*/
 
 void Histogram::equalize(){
 	// histogram[0..#grey_values] is normalized histogram 

@@ -1,15 +1,16 @@
 #include "stdafx.h"
 #include "MedianFilter.h"
 
-#include <iostream>
+//#include <iostream>
 
 
 
 MedianFilter::MedianFilter(CImg<unsigned char> img, int value){
 	image = img;
+	editedImage = img;
 	filterHistogram(value);
 }
-int compare(const void * a, const void * b)
+int MedianFilter::compare(const void * a, const void * b)
 {
 	return (*(int*)a - *(int*)b);
 }
@@ -106,13 +107,13 @@ void MedianFilter::filterHistogram(int value){//size of filter
 				filterGreenHistogram[i] = 0;
 				filterBlueHistogram[i] = 0;
 			}
-			image(x, y, 0, 0) = searchRed;
-			image(x, y, 0, 1) = searchGreen;
-			image(x, y, 0, 2) = searchBlue;
+			editedImage(x, y, 0, 0) = searchRed;
+			editedImage(x, y, 0, 1) = searchGreen;
+			editedImage(x, y, 0, 2) = searchBlue;
 		}
 	}
 }
 
 void MedianFilter::saveImage(const char * filename){
-	image.save(filename);
+	editedImage.save(filename);
 }
