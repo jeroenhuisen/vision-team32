@@ -49,6 +49,17 @@ void Histogram::makeHistogramRGB(){
 	}
 }
 
+void Histogram::makeHistogramEqualized(){
+	for (int i = 0; i < 256; i++){
+		equalizedHistogram256[i] = 0;
+	}
+	for (int r = 0; r < image.height(); r++){
+		for (int c = 0; c < image.width(); c++){
+			equalizedHistogram256[(int)image(c, r, 0, 0)]++;
+		}
+	}
+}
+
 int* Histogram::getHistogramRed10(){
 	return histogramRed10;
 }

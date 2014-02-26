@@ -30,6 +30,7 @@ public:
 	int* getEqualizedHistogram256();
 	int getTotal();
 	void makeHistogramRGB();
+	void makeHistogramEqualized();
 	void saveHistogram(const char * filename);
 	CImg<unsigned char> getImage();
 	CImg<unsigned char> getEqualizedImage();

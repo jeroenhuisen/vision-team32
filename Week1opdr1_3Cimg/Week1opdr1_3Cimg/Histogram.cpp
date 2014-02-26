@@ -44,20 +44,32 @@ void Histogram::makeRed(){
 void Histogram::equalize(){
 	// histogram[0..#grey_values] is normalized histogram 
 	
-	equalizedHistogram256 = new int[256];
+	cumulativeHistogram256 = new int[256];
 
 	double alpha = (double)255 / (double)total;
-	equalizedHistogram256[0] = alpha*histogram256[0];
+	cumulativeHistogram256[0] = alpha*histogram256[0];
 
 	for (int i = 1; i < 255; i++){
-		equalizedHistogram256[i] = equalizedHistogram256[i - 1] + alpha*histogram256[i];
+		cumulativeHistogram256[i] = cumulativeHistogram256[i - 1] + alpha*histogram256[i];
 	}
 
 	for (int r = 0; r < image.height(); r++){
 		for (int c = 0; c < image.width(); c++){
-			equalizedImage(c, r, 0, 0) = equalizedHistogram256[image(c, r, 0, 0)];
-			equalizedImage(c, r, 0, 1) = equalizedHistogram256[image(c, r, 0, 1)];
-			equalizedImage(c, r, 0, 2) = equalizedHistogram256[image(c, r, 0, 2)];
+			equalizedImage(c, r, 0, 0) = cumulativeHistogram256[image(c, r, 0, 0)];
+			equalizedImage(c, r, 0, 1) = cumulativeHistogram256[image(c, r, 0, 1)];
+			equalizedImage(c, r, 0, 2) = cumulativeHistogram256[image(c, r, 0, 2)];
+		}
+	}
+	makeHistogramEqualized();
+}
+void Histogram::makeHistogramEqualized(){
+	equalizedHistogram256 = new int[256];
+	for (int i = 0; i < 256; i++){
+		equalizedHistogram256[i] = 0;
+	}
+	for (int r = 0; r < image.height(); r++){
+		for (int c = 0; c < image.width(); c++){
+			equalizedHistogram256[(int)equalizedImage(c, r, 0, 0)]++;
 		}
 	}
 }
@@ -76,6 +88,10 @@ int* Histogram::getHistogram256(){
 
 int* Histogram::getHistogram10(){
 	return histogram10;
+}
+
+int* Histogram::getCumulativeHistogram256(){
+	return cumulativeHistogram256;
 }
 
 int* Histogram::getEqualizedHistogram256(){

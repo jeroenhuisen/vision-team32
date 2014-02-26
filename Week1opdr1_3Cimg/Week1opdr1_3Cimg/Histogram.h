@@ -8,8 +8,8 @@ private:
 	void makeGray();
 	int* histogram256;
 	int* histogram10;
+	int* cumulativeHistogram256;
 	int* equalizedHistogram256;
-	int* equalizedHistogram10;
 	int total;
 
 public:
@@ -18,7 +18,9 @@ public:
 	void equalize();
 	int* getHistogram256();
 	int* getHistogram10();
+	int* getCumulativeHistogram256();
 	int* getEqualizedHistogram256();
+	void makeHistogramEqualized();
 	int getTotal();
 	CImg<unsigned char> getImage();
 	CImg<unsigned char> getEqualizedImage();
