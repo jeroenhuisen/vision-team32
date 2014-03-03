@@ -1,10 +1,16 @@
-// Week1opdr1_1Cimg.cpp : Defines the entry point for the console application.
+// Week1opdr2Cimg.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+// Week1opdr1_3Cimg.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
 #include "CImg.h"
 #include "basetimer.h"
 #include "Histogram.h"
+#include "Image.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -39,8 +45,11 @@ int main(int argc, char* argv[])
 		image.load(argv[1]);
 		BaseTimer bt;
 		bt.start();
-		Histogram h(image);
-		image = h.getImage();
+		Image img(image);
+		img.makeGrey();
+		Histogram h(img.getEditedImage());
+		h.makeGray();
+		image = img.getEditedImage();
 		string newfilename = "grey_" + filename;
 		image.save(newfilename.c_str());
 
@@ -49,6 +58,7 @@ int main(int argc, char* argv[])
 		ofstream greyfilecsv;
 		greyfilecsv.open("gray256.csv", ios::out | ios::binary);
 		for (int i = 0; i < 256; i++){
+			
 			double test = (double)((double)luminate256[i] / ((double)total));
 			greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
 		}
@@ -74,10 +84,6 @@ int main(int argc, char* argv[])
 			greyfileEqualizedcsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
 		}
 		greyfileEqualizedcsv.close();
-
-
-		CImg<unsigned char> equalizedImage = h.getEqualizedImage();
-		equalizedImage.save(("equalize_" + filename).c_str());
 
 		bt.stop();
 		cout << bt.elapsedSeconds();
