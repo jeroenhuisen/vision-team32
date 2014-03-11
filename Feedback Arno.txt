@@ -1,0 +1,38 @@
+Meetrapport Histogram equalisation
+==================================
+
+Jullie geven aan, in de hypothese, dat de resultaten zullen afhangen van de plaatjes waarop het algorithme wordt uitgevoerd. Dit klopt natuurlijk, maar je kan ook wel verwachtingen opstellen wat er in verschillende situaties gebeurd. Bijvoorbeeld in plaatjes die onder- of overbelicht zijn.
+
+Als je dit opneemt in de hypothese kan je in de werkwijze verschillende plaatjes uitkiezen en beschrijven die dit zullen aantonen. Je moet namelijk de experimenten zo opzetten dat je kan aantonen wat je in de hypothese verwacht.
+
+Jullie kiezen voor maar 1 afbeelding. Dat is heel weinig om aan te tonen wat je wilt aantonen. Zeker omdat je aangeeft dat de resultaten zo afhankelijk zijn van het plaatje!
+
+De tabel met waardes heeft geen enkele toegevoegde waarde, dus die zou ik eruit laten.
+
+Een opmerking als 'of je moet blind zijn' is niet echt gepast in een meetrapport. 
+
+De laatste opmerking in de evaluatie zou je wel moeten kunnen verklaren (er is niets fout wat dat betreft)
+
+
+Meetrapport Median-Max-Min
+==========================
+
+Let op de grammatica (word moet wordt zijn in de eerste zin van het doel bijvoorbeeld). Er staan wel meer taalfoutjes in. Let daar goed op.
+
+In de werkwijze staat 'Dit wordt (nog )niet gemeten.' Hoe ga je het dan na? Door observatie? Schrijf dit dan netjes op.
+
+Je geeft in de werkwijze aan dat je met 5 afbeeldingen werkt. Welke zijn dit? Geef dit al aan in de werkwijze zodat je hier ook kan aangeven hoe dit je hypothese gaat 'bewijzen'.
+
+Er staat nog niets bij verwerking, conclusie en evaluatie.
+
+Code
+====
+
+In de code maken jullie nog gebruik van CImg<> voor de interne opslag. Zoals ik al enkele keren heb aangegeven dienen jullie zelf je opslag te regelen.
+
+Leuke tikfout: MiniumumFilter
+
+Jullie histogram klasse is niet generiek opgezet. Jullie hebben aparte arrays voor een 10-bins en een 256-bins histogram.
+
+
+
