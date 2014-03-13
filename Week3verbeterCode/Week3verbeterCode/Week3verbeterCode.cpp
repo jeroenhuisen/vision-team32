@@ -20,9 +20,10 @@ int main(int argc, char* argv[])
 {
 		BaseTimer bt;
 		Image image(argv[1]);
+		image.Data(0, 0, 0);
 		bt.start();
 
-		SaltAndPepper sap(image, 5);
+	//	SaltAndPepper sap(image, 5);
 		/*string newFilename = "noise_";
 		newFilename += image.GetFilename();
 		sap.saveImage(newFilename.c_str());*/

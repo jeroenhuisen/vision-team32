@@ -63,10 +63,14 @@ Image::Image(const char * filename){
 	Image::height = image.height();
 	Image::width = image.width();
 
-	channelsArray = new unsigned char*[channels];
+	Image::channelsArray = new unsigned char*[channels];
 	for (int i = 0; i < channels; i++){
+		channelsArray[i] = new unsigned char[height*width];
 		channelsArray[i] = image.data(0, 0, 0, i);
 	}
+
+	std::cout << (int)(channelsArray[0][0]) << "\n";
+
 }
 
 
@@ -79,7 +83,10 @@ unsigned char * Image::GetChannelArray(int channel){
 }
 
 unsigned char * Image::Data(int x, int y, int channel){
-	return &channelsArray[channel][0];
+	//unsigned char * p = &(channelsArray[channel][x]);
+	//std::cout << (int)p<<"\n";
+	std::cout << (int)(channelsArray[0][0]) << "\n";
+	return &channelsArray[0][0];
 }
 
 unsigned char Image::GetValue(int x, int y, int channel){
