@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-char * FilenameConvert(char * argv){
+char * FilenameConvert(const char * argv){
 	std::string filename1 = argv;
 	int filelength = 0;
 	for (int i = filename1.length() - 1; i > 0; i--){
@@ -24,21 +24,23 @@ char * FilenameConvert(char * argv){
 
 	return p2;
 }
-Image::Image(char * filename, int channels){
-	/*if (channels > image.getChannelsAmount blabla{
-	std::cerr << "Requested channels is bigger than input image has.";
-	}*/
+Image::Image(const char * filename, int channels){
 	CImg<unsigned char> image;
 	try{
 		cimg::exception_mode(0);
 		image.load(filename);
+		if (channels > image.spectrum()){
+			std::cerr << "Requested amount of channels is bigger than input image has.";
+		}
 	}
 	catch (CImgIOException cioe){
 		std::cerr << "Image not found\n";
 	}
-	filename = FilenameConvert(filename);
+	Image::filename = FilenameConvert(filename);
 
 	Image::channels = channels;
+	Image::height = image.height();
+	Image::width = image.width();
 
 	channelsArray = new unsigned char*[channels];
 	for (int i = 0; i < channels; i++){
@@ -46,12 +48,9 @@ Image::Image(char * filename, int channels){
 	}
 }
 
-Image::Image(char * filename){
-	/*if (channels > image.getChannelsAmount blabla{
-	std::cerr << "Requested channels is bigger than input image has.";
-	}*/
+Image::Image(const char * filename){
 	CImg<unsigned char> image;
-	filename = FilenameConvert(filename);
+	Image::filename = FilenameConvert(filename);
 	try{
 		cimg::exception_mode(0);
 		image.load(filename);
@@ -60,7 +59,9 @@ Image::Image(char * filename){
 		std::cerr << "Image not found\n";
 	}
 
-	Image::channels = channels;
+	Image::channels = image.spectrum();
+	Image::height = image.height();
+	Image::width = image.width();
 
 	channelsArray = new unsigned char*[channels];
 	for (int i = 0; i < channels; i++){
@@ -78,14 +79,32 @@ unsigned char * Image::GetChannelArray(int channel){
 }
 
 unsigned char * Image::Data(int x, int y, int channel){
-	return channelsArray[channel];
+	return &channelsArray[channel][0];
 }
 
 unsigned char Image::GetValue(int x, int y, int channel){
-	//return *channelsArray[channel[x + width * y]];
+	return channelsArray[channel][x + width * y];
 }
 
-void Image::SaveImage(char * filename){
+int Image::GetChannels(){
+	return channels;
+}
+
+int Image::Height(){
+	return height;
+}
+int Image::Width(){
+	return width;
+}
+
+
+
+const char * Image::GetFilename(){
+	return filename;
+}
+
+
+void Image::SaveImage(const char * filename){
 	CImg<unsigned char> image;
 	// copy channels to output image
 	image.save(filename);

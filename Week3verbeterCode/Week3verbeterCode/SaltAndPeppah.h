@@ -1,17 +1,19 @@
-#include "CImg.h"
+#ifndef SALTANDPEPPER_H
+#define SALTANDPEPPER_H
+#include "ImageV2.h"
 #include <fstream>
 #include <iomanip>
 using namespace std;
 
-using namespace cimg_library;
 class SaltAndPepper{
 private:
-	CImg<unsigned char> image;
+	Image image;
 	int percentage;
 public:
-	SaltAndPepper(CImg<unsigned char> img, int per);
+	SaltAndPepper(Image img, int per);
 	void setNoise(int per);
 	int getPercentage();
 	void saveImage(const char * filename);
-	CImg<unsigned char> getImage();
+	Image getImage();
 };
+#endif
