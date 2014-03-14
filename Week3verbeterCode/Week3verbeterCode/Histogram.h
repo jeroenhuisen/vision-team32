@@ -8,7 +8,9 @@ class Histogram{
 private:
 	CImg<unsigned char> image;
 	CImg<unsigned char> equalizedImage;
-	void makeGray();
+	//void makeGray();
+	void makeAHistogram(int value);
+	int* Ahistogram;
 	int* histogram256;
 	int* histogram10;
 	int* histogramRed10;
