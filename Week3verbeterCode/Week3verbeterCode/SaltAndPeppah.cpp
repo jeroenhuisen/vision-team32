@@ -26,8 +26,7 @@ void SaltAndPepper::setNoise(int per){
 			*image.Data(x, y, 2) = 0;
 		}
 		else{
-			unsigned char * p = image.Data(x, y, 0);
-			*p = 255;
+			*image.Data(x, y, 0) = 255;
 			*image.Data(x, y, 1) = 255;
 			*image.Data(x, y, 2) = 255;
 		}

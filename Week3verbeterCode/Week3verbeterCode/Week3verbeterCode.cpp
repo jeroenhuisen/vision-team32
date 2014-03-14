@@ -23,10 +23,10 @@ int main(int argc, char* argv[])
 		image.Data(0, 0, 0);
 		bt.start();
 
-	//	SaltAndPepper sap(image, 5);
-		/*string newFilename = "noise_";
+		SaltAndPepper sap(image, 5);
+		string newFilename = "noise_";
 		newFilename += image.GetFilename();
-		sap.saveImage(newFilename.c_str());*/
+		sap.saveImage(newFilename.c_str());
 
 		/*CImg<unsigned char> noiseImage = sap.getImage();
 		MedianFilter mf(noiseImage, 3);
