@@ -1,4 +1,5 @@
 #include "ColorFilter.h"
+#include "stdafx.h"
 void ColorFilter::makeRed(){
 	for (int r = 0; r < image.height(); r++){
 		for (int c = 0; c < image.width(); c++){
