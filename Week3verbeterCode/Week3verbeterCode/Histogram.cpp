@@ -2,32 +2,36 @@
 #include "Histogram.h"
 #include <iostream>
 
-
-Histogram::Histogram(CImg<unsigned char> image){
+Histogram::Histogram(Image image){
 	Histogram::image = image;
-	total = image.height() * image.width();
+	total = image.Height() * image.Width();
 	//makeGray();
-	makeAHistogram(256);
+	//makeAHistogram(256);
 	equalizedImage = Histogram::image;
+	val = 0;
 }
 
-void Histogram::makeAHistogram(int value){
+void Histogram::MakeAGrayHistogram(int value){
 	if ((value > 0) && (value <= 256)){
-		Ahistogram = new int[value];
+		val = value;
+		aHistogram = new int[value];
 
 		for (int i = 0; i < value; i++){
-			Ahistogram[i] = 0;
+			aHistogram[i] = 0;
 		}
 
-		for (int r = 0; r < image.height(); r++){
-			for (int c = 0; c < image.width(); c++){
-				unsigned char lum = (unsigned char)(((unsigned char)image(c, r, 0, 0) * 0.30) + ((unsigned char)image(c, r, 0, 1) * 0.59) + ((unsigned char)image(c, r, 0, 2) * 0.11));
-				image(c, r, 0, 0) = lum;
-				image(c, r, 0, 1) = lum;
-				image(c, r, 0, 2) = lum;
-				Ahistogram[(int)((lum * value) / 256)]++;
+		for (int r = 0; r < image.Height(); r++){
+			for (int c = 0; c < image.Width(); c++){
+				unsigned char lum = (unsigned char)(((unsigned char)*image.Data(c, r, 0) * 0.30) + ((unsigned char)*image.Data(c, r, 1) * 0.59) + ((unsigned char)*image.Data(c, r, 2) * 0.11));
+				*image.Data(c, r, 0) = lum;
+				*image.Data(c, r, 1) = lum;
+				*image.Data(c, r, 2) = lum;
+				aHistogram[(int)((lum * value) / 256)]++;
 			}
 		}
+	}
+	else{
+		std::cerr << "value klopt niet";
 	}
 }
 
@@ -52,6 +56,30 @@ histogram10[(int)((lum * 10) / 256)]++;
 }
 }*/
 
+void Histogram::MakeARGBHistogram(int value){
+	if ((value > 0) && (value <= 256)){
+		val = value;
+		aHistogramRed = new int[value];
+		aHistogramGreen = new int[value];
+		aHistogramBlue = new int[value];
+
+		for (int i = 0; i < value; i++){
+			aHistogramRed[i] = 0;
+			aHistogramGreen[i] = 0;
+			aHistogramBlue[i] = 0;
+		}
+
+		for (int r = 0; r < image.Height(); r++){
+			for (int c = 0; c < image.Width(); c++){
+				aHistogramRed[(int)((*image.Data(c, r, 0) * value) / 256)]++;
+				aHistogramGreen[(int)((*image.Data(c, r, 0) * value) / 256)]++;
+				aHistogramBlue[(int)((*image.Data(c, r, 0) * value) / 256)]++;
+			}
+		}
+	}
+}
+
+/*
 void Histogram::makeHistogramRGB(){
 	histogramRed10 = new int[10];
 	histogramGreen10 = new int[10];
@@ -68,8 +96,27 @@ void Histogram::makeHistogramRGB(){
 			histogramBlue10[(int)((image(c, r, 0, 2) * 10) / 256)]++;
 		}
 	}
+}*/
+
+void Histogram::MakeAEqualizedHistogram(int value){
+	if ((value > 0) && (value <= 256)){
+		val = value;
+
+		for (int i = 0; i < value; i++){
+			aEqualizedHistogram[i] = 0;
+		}
+
+		for (int r = 0; r < image.Height(); r++){
+			for (int c = 0; c < image.Width(); c++){
+				aEqualizedHistogram[(int)image.Data(c, r, 0)]++;
+			}
+		}
+	}
 }
 
+
+
+/*
 void Histogram::makeHistogramEqualized(){
 	for (int i = 0; i < 256; i++){
 		equalizedHistogram256[i] = 0;
@@ -91,16 +138,6 @@ int* Histogram::getHistogramBlue10(){
 	return histogramBlue10;
 }
 
-/*void Histogram::makeRed(){
-for (int r = 0; r < image.height(); r++){
-for (int c = 0; c < image.width(); c++){
-//unsigned char lum = (unsigned char)(((unsigned char)image(c, r, 0, 0) * 0.30) + ((unsigned char)image(c, r, 0, 1) * 0.59) + ((unsigned char)image(c, r, 0, 2) * 0.11));
-//image(c, r, 0, 0) = lum;
-image(c, r, 0, 1) = 0;
-image(c, r, 0, 2) = 0;
-}
-}
-}*/
 
 void Histogram::equalize(){
 	// histogram[0..#grey_values] is normalized histogram 
@@ -177,6 +214,19 @@ void Histogram::saveHistogram(const char * filename){
 	greyfilecsv.open(bluecsv, ios::out | ios::binary);
 	for (int i = 0; i < 10; i++){
 		double test = (double)((double)histogramBlue10[i] / ((double)total));
+		greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
+	}
+	greyfilecsv.close();
+}*/
+
+void Histogram::SaveHistogram(const char * filename){
+	ofstream greyfilecsv;
+	string redcsv = "Histogram_";
+	redcsv += filename;
+	redcsv += ".csv";
+	greyfilecsv.open(redcsv, ios::out | ios::binary);
+	for (int i = 0; i < val; i++){
+		double test = (double)((double)aHistogram[i] / ((double)total));
 		greyfilecsv << i << "," << setprecision(10) << fixed << showpoint << test << "\n";
 	}
 	greyfilecsv.close();

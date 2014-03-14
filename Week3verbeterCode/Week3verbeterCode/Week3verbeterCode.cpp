@@ -9,6 +9,7 @@
 //#include "MiniumumFilter.h"
 
 #include "ImageV2.h"
+#include "Histogram.h" 
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -28,6 +29,9 @@ int main(int argc, char* argv[])
 		newFilename += image.GetFilename();
 		sap.saveImage(newFilename.c_str());
 
+		Histogram henk(image);
+		henk.MakeAGrayHistogram(256);
+		henk.SaveHistogram("test");
 		/*CImg<unsigned char> noiseImage = sap.getImage();
 		MedianFilter mf(noiseImage, 3);
 		string newImage = "median_";

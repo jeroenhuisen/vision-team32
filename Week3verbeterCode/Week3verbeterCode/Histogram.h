@@ -1,39 +1,44 @@
-#include "Cimg.h"
+#ifndef HISTOGRAM
+#define HISTOGRAM
+#include "ImageV2.h"
 #include <fstream>
 #include <iomanip>
+
 using namespace std;
 
-using namespace cimg_library;
 class Histogram{
 private:
-	CImg<unsigned char> image;
-	CImg<unsigned char> equalizedImage;
+	Image image;
+	Image equalizedImage;
 	//void makeGray();
-	void makeAHistogram(int value);
-	int* Ahistogram;
-	int* histogram256;
-	int* histogram10;
-	int* histogramRed10;
-	int* histogramGreen10;
-	int* histogramBlue10;
-	int* equalizedHistogram256;
-	int* equalizedHistogram10;
+	int val;
+	int* aHistogram;
+	//int* histogram256;
+	//int* histogram10;
+	int* aHistogramRed;
+	int* aHistogramGreen;
+	int* aHistogramBlue;
+	int* aEqualizedHistogram;
+	//int* equalizedHistogram10;
 	int total;
 
 public:
-	Histogram(CImg<unsigned char> image);
-	//void makeRed();
-	void equalize();
-	int* getHistogram256();
-	int* getHistogram10();
-	int* getHistogramRed10();
-	int* getHistogramGreen10();
-	int* getHistogramBlue10();
-	int* getEqualizedHistogram256();
-	int getTotal();
-	void makeHistogramRGB();
-	void makeHistogramEqualized();
-	void saveHistogram(const char * filename);
-	CImg<unsigned char> getImage();
-	CImg<unsigned char> getEqualizedImage();
+	Histogram(Image image);
+	void MakeAGrayHistogram(int value);
+	void MakeARGBHistogram(int value);
+	void MakeAEqualizedHistogram(int value);
+	//void equalize();
+	//int* getHistogram256();
+	//int* getHistogram10();
+	//int* getHistogramRed10();
+	//int* getHistogramGreen10();
+	//int* getHistogramBlue10();
+	//int* getEqualizedHistogram256();
+	//int getTotal();
+	//void makeHistogramRGB();
+	//void makeHistogramEqualized();
+	void SaveHistogram(const char * filename);
+	Image getImage();
+	Image getEqualizedImage();
 };
+#endif
