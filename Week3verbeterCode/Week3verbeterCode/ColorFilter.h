@@ -4,8 +4,13 @@
 
 class ColorFilter{
 private:
-
+	Image image;
+	Image editedImage;
 public:
-
+	ColorFilter(Image img);
+	void makeRed();
+	void makeGreen();
+	void makeBlue();
+	void makeGrey();
 };
 #endif
