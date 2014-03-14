@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="basetimer.h" />
     <ClInclude Include="CImg.h" />
+    <ClInclude Include="ColorFilter.h" />
     <ClInclude Include="Histogram.h" />
     <ClInclude Include="ImageV2.h" />
     <ClInclude Include="MaxiumumFilter.h" />
@@ -92,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="basetimer.cpp" />
+    <ClCompile Include="ColorFilter.cpp" />
     <ClCompile Include="Histogram.cpp" />
     <ClCompile Include="ImageV2.cpp" />
     <ClCompile Include="MaxiumumFilter.cpp" />
