@@ -98,6 +98,9 @@ void KMeansClustering::clusterRGB(){
 		std::cout << "max iterations\n";
 	}
 
+	//final: change all pixels colors to match color of the 
+	//cluster mean
+
 	for (int y = 0; y < image.Height(); y++){
 		for (int x = 0; x < image.Width(); x++){
 			*editedImage.Data(x, y, 0) = cluster[allPixels[x][y]][0];
@@ -105,7 +108,4 @@ void KMeansClustering::clusterRGB(){
 			*editedImage.Data(x, y, 2) = cluster[allPixels[x][y]][2];
 		}
 	}
-
-	//final: change all pixels colors to match color of the 
-	//cluster mean
 }
