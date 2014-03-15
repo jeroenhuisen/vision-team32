@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ColorFilter.h"
 
-ColorFilter::ColorFilter(Image img){
+ColorFilter::ColorFilter(Image img): Filter(img){
 	image = img;
 	editedImage = img;
 }

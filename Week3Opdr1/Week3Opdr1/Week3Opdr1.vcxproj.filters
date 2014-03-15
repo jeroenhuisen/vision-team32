@@ -24,34 +24,34 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="basetimer.h">
+    <ClInclude Include="..\..\Libary\basetimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CImg.h">
+    <ClInclude Include="..\..\Libary\ColorFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Histogram.h">
+    <ClInclude Include="..\..\Libary\Filter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MaxiumumFilter.h">
+    <ClInclude Include="..\..\Libary\Histogram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MedianFilter.h">
+    <ClInclude Include="..\..\Libary\ImageV2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MiniumumFilter.h">
+    <ClInclude Include="..\..\Libary\MaxiumumFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SaltAndPeppah.h">
+    <ClInclude Include="..\..\Libary\MedianFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageV2.h">
+    <ClInclude Include="..\..\Libary\MiniumumFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ColorFilter.h">
+    <ClInclude Include="..\..\Libary\SaltAndPeppah.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Filter.h">
+    <ClInclude Include="KMeansClustering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,31 +59,34 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Week3verbeterCode.cpp">
+    <ClCompile Include="Week3Opdr1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="basetimer.cpp">
+    <ClCompile Include="..\..\Libary\basetimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Histogram.cpp">
+    <ClCompile Include="..\..\Libary\ColorFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MaxiumumFilter.cpp">
+    <ClCompile Include="..\..\Libary\Histogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MedianFilter.cpp">
+    <ClCompile Include="..\..\Libary\ImageV2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MiniumumFilter.cpp">
+    <ClCompile Include="..\..\Libary\MaxiumumFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SaltAndPeppah.cpp">
+    <ClCompile Include="..\..\Libary\MedianFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ImageV2.cpp">
+    <ClCompile Include="..\..\Libary\MiniumumFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ColorFilter.cpp">
+    <ClCompile Include="..\..\Libary\SaltAndPeppah.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KMeansClustering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

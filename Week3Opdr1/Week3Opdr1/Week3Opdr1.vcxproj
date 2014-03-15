@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{89D9B394-2FF3-471D-BAD1-83A06BEF1DE9}</ProjectGuid>
+    <ProjectGuid>{75C4C4FE-B044-4EE8-A4D2-E6788AE16528}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Week3verbeterCode</RootNamespace>
+    <RootNamespace>Week3Opdr1</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -52,6 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Jeroen\Source\Repos\vision-team32\Libary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -67,6 +68,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Jeroen\Source\Repos\vision-team32\Libary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,33 +81,34 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basetimer.h" />
-    <ClInclude Include="CImg.h" />
-    <ClInclude Include="ColorFilter.h" />
-    <ClInclude Include="Filter.h" />
-    <ClInclude Include="Histogram.h" />
-    <ClInclude Include="ImageV2.h" />
-    <ClInclude Include="MaxiumumFilter.h" />
-    <ClInclude Include="MedianFilter.h" />
-    <ClInclude Include="MiniumumFilter.h" />
-    <ClInclude Include="SaltAndPeppah.h" />
+    <ClInclude Include="..\..\Libary\basetimer.h" />
+    <ClInclude Include="..\..\Libary\ColorFilter.h" />
+    <ClInclude Include="..\..\Libary\Filter.h" />
+    <ClInclude Include="..\..\Libary\Histogram.h" />
+    <ClInclude Include="..\..\Libary\ImageV2.h" />
+    <ClInclude Include="..\..\Libary\MaxiumumFilter.h" />
+    <ClInclude Include="..\..\Libary\MedianFilter.h" />
+    <ClInclude Include="..\..\Libary\MiniumumFilter.h" />
+    <ClInclude Include="..\..\Libary\SaltAndPeppah.h" />
+    <ClInclude Include="KMeansClustering.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="basetimer.cpp" />
-    <ClCompile Include="ColorFilter.cpp" />
-    <ClCompile Include="Histogram.cpp" />
-    <ClCompile Include="ImageV2.cpp" />
-    <ClCompile Include="MaxiumumFilter.cpp" />
-    <ClCompile Include="MedianFilter.cpp" />
-    <ClCompile Include="MiniumumFilter.cpp" />
-    <ClCompile Include="SaltAndPeppah.cpp" />
+    <ClCompile Include="..\..\Libary\basetimer.cpp" />
+    <ClCompile Include="..\..\Libary\ColorFilter.cpp" />
+    <ClCompile Include="..\..\Libary\Histogram.cpp" />
+    <ClCompile Include="..\..\Libary\ImageV2.cpp" />
+    <ClCompile Include="..\..\Libary\MaxiumumFilter.cpp" />
+    <ClCompile Include="..\..\Libary\MedianFilter.cpp" />
+    <ClCompile Include="..\..\Libary\MiniumumFilter.cpp" />
+    <ClCompile Include="..\..\Libary\SaltAndPeppah.cpp" />
+    <ClCompile Include="KMeansClustering.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Week3verbeterCode.cpp" />
+    <ClCompile Include="Week3Opdr1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
