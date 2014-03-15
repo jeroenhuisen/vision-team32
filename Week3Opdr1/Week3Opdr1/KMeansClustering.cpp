@@ -105,7 +105,6 @@ void KMeansClustering::clusterRGB(){
 			*editedImage.Data(x, y, 2) = cluster[allPixels[x][y]][2];
 		}
 	}
-	editedImage.SaveImage("test.bmp");
 
 	//final: change all pixels colors to match color of the 
 	//cluster mean

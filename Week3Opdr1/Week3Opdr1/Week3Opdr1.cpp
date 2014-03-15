@@ -18,7 +18,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	cout << argc;
 	if (argc <= 2){
 		cerr << "Missing argument, use image path and value";
 		system("pause");
@@ -34,11 +33,11 @@ int main(int argc, char* argv[])
 
 	bt.start();
 
-	KMeansClustering kmc(image, argc);
+	KMeansClustering kmc(image, atoi(argv[2]));
 	kmc.clusterRGB();
-
+	kmc.getEditedImage().SaveImage("henk.bmp");
 	bt.stop();
-	cout << "Bestand ingelezen in: " << bt.elapsedSeconds() << " seconden\n";
+	cout << "KMeansClustering in: " << bt.elapsedSeconds() << " seconden\n";
 	system("pause");
 	return 0;
 }
