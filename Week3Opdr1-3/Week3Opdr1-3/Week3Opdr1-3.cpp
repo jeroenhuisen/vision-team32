@@ -1,14 +1,13 @@
-// Week3Opdr1.cpp : Defines the entry point for the console application.
-//
-
-// Week3verbeterCode.cpp : Defines the entry point for the console application.
+// Week3Opdr1-3.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
 #include "basetimer.h"
 
 #include "ImageV2.h"
-#include "KMeansClustering.h"
+#include "ColorFilter.h"
+#include "AutoThreshold.h"
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -30,14 +29,18 @@ int main(int argc, char* argv[])
 
 	bt.stop();
 	cout << "Bestand ingelezen in: " << bt.elapsedSeconds() << " seconden\n";
-
 	bt.start();
+	ColorFilter cf(image);
+	cf.makeGrey();
+	image = cf.getEditedImage();
+	image.SaveImage("grey_watchdogs.bmp");
 
-	KMeansClustering kmc(image, atoi(argv[2]));
-	kmc.clusterRGB();
-	kmc.getEditedImage().SaveImage("henk.bmp");
+	AutoThreshold autoT(image);
+	autoT.ThresholdCalc();
+	autoT.getEditedImage().SaveImage("hoi.bmp");
+
 	bt.stop();
-	cout << "KMeansClustering in: " << bt.elapsedSeconds() << " seconden\n";
+	cout << "Bestand ingelezen in: " << bt.elapsedSeconds() << " seconden\n";
 	system("pause");
 	return 0;
 }
