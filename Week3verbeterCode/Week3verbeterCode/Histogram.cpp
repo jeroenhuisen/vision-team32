@@ -126,19 +126,60 @@ void Histogram::makeHistogramEqualized(){
 			equalizedHistogram256[(int)image(c, r, 0, 0)]++;
 		}
 	}
+}*/
+
+int* Histogram::getAHistogramRed(){
+	return aHistogramRed;
 }
+
+/*
 
 int* Histogram::getHistogramRed10(){
 	return histogramRed10;
+}*/
+
+int* Histogram::getAHistogramGreen(){
+	return aHistogramGreen;
 }
+
+/*
 int* Histogram::getHistogramGreen10(){
 	return histogramGreen10;
+}*/
+
+
+int* Histogram::getAHistogramBlue(){
+	return aHistogramBlue;
 }
+
+/*
 int* Histogram::getHistogramBlue10(){
 	return histogramBlue10;
+}*/
+
+void Histogram::AEqualize(int value){
+	if ((value > 0) && (value <= 256)){
+		val = value;
+		aEqualizedHistogram = new int[value];
+
+		double alpha = (double)255 / (double)total;
+		aEqualizedHistogram[0] = alpha* aHistogram[0];
+
+		for(int i = 1; i < value; i++){
+			aEqualizedHistogram[i] = aEqualizedHistogram[i - 1] + alpha* aHistogram[i];
+		}
+
+		for (int r = 0; r < image.Height(); r++){
+			for (int c = 0; c < image.Width(); c++){
+				*aEqualizedImage.Data(c, r, 0) = aEqualizedHistogram[*image.Data(c, r, 0)];
+				*aEqualizedImage.Data(c, r, 1) = aEqualizedHistogram[*image.Data(c, r, 1)];
+				*aEqualizedImage.Data(c, r, 2) = aEqualizedHistogram[*image.Data(c, r, 2)];
+			}
+		}
+	}
 }
 
-
+/*
 void Histogram::equalize(){
 	// histogram[0..#grey_values] is normalized histogram 
 
@@ -158,12 +199,19 @@ void Histogram::equalize(){
 			equalizedImage(c, r, 0, 2) = equalizedHistogram256[image(c, r, 0, 2)];
 		}
 	}
+}*/
+
+Image Histogram::GetAImage(){
+	return aImage;
 }
 
+/*
 CImg<unsigned char> Histogram::getImage(){
 	return image;
-}
+}*/
 
+
+/*
 CImg<unsigned char> Histogram::getEqualizedImage(){
 	return equalizedImage;
 }

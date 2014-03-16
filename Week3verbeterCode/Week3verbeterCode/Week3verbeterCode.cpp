@@ -29,9 +29,9 @@ int main(int argc, char* argv[])
 		newFilename += image.GetFilename();
 		sap.saveImage(newFilename.c_str());
 
-		Histogram henk(image);
-		henk.MakeAGrayHistogram(256);
-		henk.SaveHistogram("test");
+		Histogram His(image);
+		His.MakeAGrayHistogram(256);
+		His.SaveHistogram("test");
 		/*CImg<unsigned char> noiseImage = sap.getImage();
 		MedianFilter mf(noiseImage, 3);
 		string newImage = "median_";

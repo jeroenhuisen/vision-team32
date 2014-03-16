@@ -10,6 +10,8 @@ class Histogram{
 private:
 	Image image;
 	Image equalizedImage;
+	Image aImage;
+	Image aEqualizedImage;
 	//void makeGray();
 	int val;
 	int* aHistogram;
@@ -27,6 +29,10 @@ public:
 	void MakeAGrayHistogram(int value);
 	void MakeARGBHistogram(int value);
 	void MakeAEqualizedHistogram(int value);
+	int* getAHistogramRed();
+	int* getAHistogramGreen();
+	int* getAHistogramBlue();
+	void AEqualize(int value);
 	//void equalize();
 	//int* getHistogram256();
 	//int* getHistogram10();
@@ -38,7 +44,9 @@ public:
 	//void makeHistogramRGB();
 	//void makeHistogramEqualized();
 	void SaveHistogram(const char * filename);
-	Image getImage();
-	Image getEqualizedImage();
+	Image GetAImage();
+	Image GetAEqualizedImage();
+	//Image getImage();
+	//Image getEqualizedImage();
 };
 #endif
