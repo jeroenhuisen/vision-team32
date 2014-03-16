@@ -10,7 +10,8 @@ private:
 	Image editedImage;
 
 public:
-	AutoThreshold(Image img, int k);
-	void clusterRGB();
+	AutoThreshold(Image img);
+	void ThresholdCalc();
+	void Threshold(int threshold);
 };
 #endif
