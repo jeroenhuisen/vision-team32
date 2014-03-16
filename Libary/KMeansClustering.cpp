@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "KMeansClustering.h"
 #include <random>
 #include <string>
@@ -32,7 +32,7 @@ void KMeansClustering::clusterRGB(){
 		cluster[i][2] = *image.Data(x, y, 2);//save cluster blue value
 		i++; //maybe there should be a check that this aren't the same values, so the clusters won't  the same
 	}
-	
+
 	//assign pixels to cluster
 	int ** allPixels = new int*[image.Width()];
 	for (int i = 0; i < image.Width(); i++){
@@ -56,21 +56,20 @@ void KMeansClustering::clusterRGB(){
 						lowestDifferenceCluster = k;
 					}
 				}
-				//assign each pixel(from image data) to the nearest mean  
+				//assign each pixel(from image data) to the nearest mean
 				allPixels[x][y] = lowestDifferenceCluster;
 			}
 		}
 		int ** allMeans = new int*[kValue];
+		int * meansAverage = new int[kValue];
 		for (int i = 0; i < kValue; i++){
 			allMeans[i] = new int[3];
 			allMeans[i][0] = 0;
 			allMeans[i][1] = 0;
 			allMeans[i][2] = 0;
-		}
-		int * meansAverage = new int[kValue];
-		for (int i = 0; i < kValue; i++){
 			meansAverage[i] = 1;
 		}
+
 		for (int y = 0; y < image.Height(); y++){
 			for (int x = 0; x < image.Width(); x++){
 				allMeans[allPixels[x][y]][0] += *image.Data(x, y, 0);
@@ -98,7 +97,7 @@ void KMeansClustering::clusterRGB(){
 		std::cout << "max iterations\n";
 	}
 
-	//final: change all pixels colors to match color of the 
+	//final: change all pixels colors to match color of the
 	//cluster mean
 
 	for (int y = 0; y < image.Height(); y++){
