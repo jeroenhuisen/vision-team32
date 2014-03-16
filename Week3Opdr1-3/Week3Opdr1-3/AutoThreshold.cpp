@@ -29,9 +29,7 @@ void AutoThreshold::Threshold(int threshold){
 
 void AutoThreshold::ThresholdCalc(){
 	//compute u1, the mean grey level of the cornerpixels
-	//int totalPixelCorners = *image.Data(0, 0, 0) + *image.Data(0, image.Width()-1, 0) + *image.Data(image.Height()-1, 0, 0) + *image.Data(image.Height()-1, image.Width()-1, 0);
-	int test = image.Width();
-	int totalPixelCorners = *image.Data(0, image.Width() - 1, 0);
+	int totalPixelCorners = *image.Data(0, 0, 0) + *image.Data(image.Width()-1, 0, 0) + *image.Data(0, image.Height()-1, 0) + *image.Data( image.Width()-1, image.Height()-1, 0);
 	int u1 = totalPixelCorners / 4;
 	//compute u2, the mean grey level of all other pixels
 	int totalPixels = 0;
@@ -52,6 +50,8 @@ void AutoThreshold::ThresholdCalc(){
 	while (tOld != tNew){
 		totalBigger = 0;
 		totalSmaller = 0;
+		amountBigger = 0;
+		amountSmaller = 0;
 		for (int y = 0; y < image.Height(); y++){
 			unsigned char * p = image.Data(0, y, 0);
 			for (int x = 0; x < image.Width(); x++){
@@ -63,7 +63,7 @@ void AutoThreshold::ThresholdCalc(){
 					totalBigger += *(p + x);
 					amountBigger++;
 				}
-				totalPixels += *(p + x);
+				//totalPixels += *(p + x);
 			}
 		}
 		u1 = totalSmaller / amountSmaller;
