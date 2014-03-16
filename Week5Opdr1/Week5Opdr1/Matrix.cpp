@@ -3,6 +3,7 @@
 
 Matrix::Matrix(Image image){
 	Matrix::image = image;
+	Matrix::editedImage = image;
 	a0 = 0;
 	b0 = 0;
 	a1 = 0;
@@ -30,9 +31,9 @@ void Matrix::Verschuif(int dx, int dy){
 	for (int h = 0; h < image.Height(); h++){
 		for (int i = image.Width(); i >= 0; i--){
 			//int x0 = 
-			*image.Data(i + dx, h + dy, 0) = *image.Data(i, h, 0);
-			*image.Data(i + dx, h + dy, 1) = *image.Data(i, h, 1);
-			*image.Data(i + dx, h + dy, 2) = *image.Data(i, h, 2);
+			*editedImage.Data(i + dx, h + dy, 0) = *image.Data(i, h, 0);
+			*editedImage.Data(i + dx, h + dy, 1) = *image.Data(i, h, 1);
+			*editedImage.Data(i + dx, h + dy, 2) = *image.Data(i, h, 2);
 		}
 	}
 }
@@ -40,5 +41,5 @@ void Matrix::Verschuif(int dx, int dy){
 
 
 void Matrix::SaveImg(const char* filename){
-	image.SaveImage(filename);
+	editedImage.SaveImage(filename);
 }

@@ -11,6 +11,7 @@ using namespace std;
 class Matrix{
 private:
 	Image image;
+	Image editedImage;
 	int a0;
 	int b0;
 	int a1;
