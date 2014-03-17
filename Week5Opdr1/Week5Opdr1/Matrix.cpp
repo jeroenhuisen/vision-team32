@@ -3,7 +3,8 @@
 
 Matrix::Matrix(Image image){
 	Matrix::image = image;
-	Matrix::editedImage = image; //shallow copy le fail from me
+	//Matrix::editedImage = image; //shallow copy le fail from me
+	Matrix::editedImage = Image(image.Width(), image.Height(), image.GetChannels()); //le fix
 	a0 = 0;
 	a1 = 0;
 	a2 = 0;
