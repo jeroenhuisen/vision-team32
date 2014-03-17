@@ -54,7 +54,7 @@ void Matrix::Transformatie(int a0, int a1, int a2, int b0, int b1, int b2){
 	}
 }
 
-void Matrix::Transformatie1(int a0, int a1, int a2, int b0, int b1, int b2){
+void Matrix::Transformatie1(float a0, float a1, int a2, float b0, float b1, int b2){
 	for (int y = 0; y < image.Height(); y++){
 		unsigned char *p = editedImage.Data(0, y, 0);
 		unsigned char *p1 = editedImage.Data(0, y, 1);
