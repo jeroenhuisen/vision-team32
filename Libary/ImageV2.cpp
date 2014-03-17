@@ -79,6 +79,25 @@ Image::Image(const char * filename){
 	}
 }
 
+Image::Image(int width, int height, int channels){
+	CImg<unsigned char> image(width, height, 1, channels);
+	Image::filename = "NoFilename";
+
+	Image::channels = image.spectrum();
+	Image::height = image.height();
+	Image::width = image.width();
+
+	Image::channelsArray = new unsigned char*[channels];
+	for (int i = 0; i < channels; i++){
+		channelsArray[i] = new unsigned char[height*width];
+		unsigned char * p = image.data(0, 0, 0, i);
+		for (int y = 0; y < height* width; y++){
+			channelsArray[i][y] = *p;
+			p++;
+		}
+	}
+}
+
 
 unsigned char ** Image::GetChannelsArray(){
 	return channelsArray;

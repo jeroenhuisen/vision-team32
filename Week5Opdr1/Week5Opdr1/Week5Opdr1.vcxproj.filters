@@ -33,7 +33,7 @@
     <ClInclude Include="Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageV2.h">
+    <ClInclude Include="..\..\Libary\ImageV2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClCompile Include="Matrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ImageV2.cpp">
+    <ClCompile Include="..\..\Libary\ImageV2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
