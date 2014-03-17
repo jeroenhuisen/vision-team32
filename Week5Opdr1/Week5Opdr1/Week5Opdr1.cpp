@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	Matrix Mx(image);
 	string newFname = "Mx_";
 	newFname += image.GetFilename();
-	Mx.Transformatie(1, 25, 0, 0, 1, 0);
+	Mx.Transformatie1(1, 25, 0, 0, 1, 0);
 	Mx.SaveImg(newFname.c_str());
 
 	bt.stop();
