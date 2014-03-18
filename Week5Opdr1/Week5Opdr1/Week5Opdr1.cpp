@@ -17,11 +17,12 @@ int main(int argc, char* argv[])
 	Matrix Mx(image);
 	string newFname = "Mx_";
 	newFname += image.GetFilename();
-	Mx.Transformatie1(1, 0, 25, 0, 1, 50);
+	//Mx.Transformatie1(1, 1, 0, 0, 1, 0);
+	Mx.Rotatie(0.2);
 	Mx.SaveImg(newFname.c_str());
 
 	bt.stop();
-	std::cout << bt.elapsedSeconds();
+	std::cout << bt.elapsedSeconds() << '\n';
 
 	system("pause");
 	return 0;
