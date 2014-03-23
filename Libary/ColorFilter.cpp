@@ -2,8 +2,6 @@
 #include "ColorFilter.h"
 
 ColorFilter::ColorFilter(Image img): Filter(img){
-	image = img;
-	editedImage = img;
 }
 
 void ColorFilter::makeRed(){

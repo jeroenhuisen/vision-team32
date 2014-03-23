@@ -5,8 +5,6 @@
 
 class ColorFilter: public Filter{
 private:
-	Image image;
-	Image editedImage;
 public:
 	ColorFilter(Image img);
 	void makeRed();

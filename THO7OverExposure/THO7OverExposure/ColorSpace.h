@@ -7,8 +7,6 @@
 
 class ColorSpace : public Filter{
 private:
-	Image image;
-	Image editedImage;
 	int* RGBtoXYZ(unsigned char R, unsigned char G, unsigned char B);
 	int* XYZtoLAB(unsigned char x, unsigned char y, unsigned char z);
 public:

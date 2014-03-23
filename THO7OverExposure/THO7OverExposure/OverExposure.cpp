@@ -3,8 +3,6 @@
 #include <iostream>
 
 OverExposure::OverExposure(Image img) :Filter(img){
-	image = img;
-	editedImage = Image(img.Width(), img.Height(), img.GetChannels());
 }
 
 
