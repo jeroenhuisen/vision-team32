@@ -2,8 +2,7 @@
 #include "SaltAndPeppah.h"
 #include <random>
 
-SaltAndPepper::SaltAndPepper(Image img, int per){
-	image = img;
+SaltAndPepper::SaltAndPepper(Image img, int per):Filter(img){
 	setNoise(per);
 }
 
@@ -21,26 +20,18 @@ void SaltAndPepper::setNoise(int per){
 		x = distr(eng);//without this it looks like confetti because the pixels will change so only 1 color will change.
 		y = distr2(eng);
 		if (distrColor(eng) == 0){
-			*image.Data(x, y, 0) = 0;
-			*image.Data(x, y, 1) = 0;
-			*image.Data(x, y, 2) = 0;
+			*editedImage.Data(x, y, 0) = 0;
+			*editedImage.Data(x, y, 1) = 0;
+			*editedImage.Data(x, y, 2) = 0;
 		}
 		else{
-			*image.Data(x, y, 0) = 255;
-			*image.Data(x, y, 1) = 255;
-			*image.Data(x, y, 2) = 255;
+			*editedImage.Data(x, y, 0) = 255;
+			*editedImage.Data(x, y, 1) = 255;
+			*editedImage.Data(x, y, 2) = 255;
 		}
 	}
 }
 
 int SaltAndPepper::getPercentage(){
 	return percentage;
-}
-
-void SaltAndPepper::saveImage(const char * filename){
-	image.SaveImage(filename);
-}
-
-Image SaltAndPepper::getImage(){
-	return image;
 }
