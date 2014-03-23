@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Matrix.h"
 
+#include <iostream>
+
 Matrix::Matrix(Image image){
 	Matrix::image = image;
 	//Matrix::editedImage = image; //shallow copy le fail from me
@@ -69,6 +71,33 @@ void Matrix::Transformatie1(float a0, float a1, int a2, float b0, float b1, int 
 		for (int x = image.Width()-1; x >= 0; x--){
 			int X = (a0 * x) + (a1 * y) + a2;
 			int Y = (b0 * x) + (b1 * y) + b2;
+			//std::cout << X << ' ' << Y << '\n';
+			if (X >= 0 && X < image.Width() && Y >= 0 && Y < image.Height()){
+				*editedImage.Data(X, Y, 0) = *image.Data(x, y, 0);
+				*editedImage.Data(X, Y, 1) = *image.Data(x, y, 1);
+				*editedImage.Data(X, Y, 2) = *image.Data(x, y, 2);
+			}
+		}
+	}
+}
+
+void Matrix::Rotatie(float f){
+	for (int y = 0; y < image.Height(); y++){
+		unsigned char *p = editedImage.Data(0, y, 0);
+		unsigned char *p1 = editedImage.Data(0, y, 1);
+		unsigned char *p2 = editedImage.Data(0, y, 2);
+		for (int x = 0; x < image.Width(); x++){
+			*(p + x) = 0;
+			*(p1 + x) = 0;
+			*(p2 + x) = 0;
+		}
+	}
+	for (int y = 0; y < image.Height(); y++){
+		//for (int x = image.Width() - 1; x >= 0; x--){
+		for (int x = 0; x < image.Width(); x++){
+			int X = x * cos(f) - y * sin(f);
+			int Y = y * cos(f) + x * sin(f);
+			//std::cout << X << ' ' << Y << '\n';
 			if (X >= 0 && X < image.Width() && Y >= 0 && Y < image.Height()){
 				*editedImage.Data(X, Y, 0) = *image.Data(x, y, 0);
 				*editedImage.Data(X, Y, 1) = *image.Data(x, y, 1);
@@ -80,4 +109,6 @@ void Matrix::Transformatie1(float a0, float a1, int a2, float b0, float b1, int 
 
 void Matrix::SaveImg(const char* filename){
 	editedImage.SaveImage(filename);
+	std::cout << 3 * sin(20) << '\n';
+	std::cout << 3 * cos(20) << '\n';
 }
