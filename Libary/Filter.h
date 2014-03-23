@@ -3,13 +3,13 @@
 #include "ImageV2.h"
 
 class Filter{
-private:
+protected:
 	Image image;
 	Image editedImage;
 public:
 	Filter(Image img){
 		image = img;
-		editedImage = img;
+		editedImage = Image(img.Width(), img.Height(), img.GetChannels());
 	}
 	Image getImage(){
 		return image;
