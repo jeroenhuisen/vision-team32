@@ -14,10 +14,24 @@ int main(int argc, char* argv[])
 	ColorSpace cs(img);
 	cs.ToXYZ();
 	cs.ToLAB();
+	//cs.Test();
+	cs.getEditedImage().SaveImage("dikkiedik.bmp");
+	img = cs.getEditedImage();
+	ColorSpace csTEST(img);
+	csTEST.setA(cs.getA());
+	csTEST.setB(cs.getB());
+	csTEST.ToRGB();
+	csTEST.getEditedImage().SaveImage("convert.bmp");
 	OverExposure oe(img);
-	oe.M();
-	oe.Threshold(250);
-	oe.ThresholdRepair(250);
+	//oe.M();
+	//oe.Threshold(90);
+	oe.ThresholdRepair(90);
+	ColorSpace cs1(oe.getEditedImage());
+	cs1.setA(cs.getA());
+	cs1.setB(cs.getB());
+	cs1.ToRGB();
+	cs1.getEditedImage().SaveImage("testert.bmp");
+
 	system("pause");
 	return 0;
 }

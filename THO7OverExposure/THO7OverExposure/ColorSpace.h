@@ -7,11 +7,30 @@
 
 class ColorSpace : public Filter{
 private:
-	int* RGBtoXYZ(unsigned char R, unsigned char G, unsigned char B);
-	int* XYZtoLAB(unsigned char x, unsigned char y, unsigned char z);
+	double* RGBtoXYZ(unsigned char R, unsigned char G, unsigned char B);
+	float* XYZtoLAB(float x, float y, float z);
+
+	char * A;
+	char * B;
 public:
 	ColorSpace(Image img);
 	void ToXYZ();
 	void ToLAB();
+	void ToRGB();
+	
+	char * getA(){
+		return A;
+	}
+	char * getB(){
+		return B;
+	}
+
+	void setA(char * Ab){
+		A = Ab;
+	}
+	void setB(char * Bb){
+		B = Bb;
+	}
+	void Test();
 };
 #endif
