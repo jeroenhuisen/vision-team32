@@ -6,7 +6,7 @@
 #include <iomanip>
 using namespace std;
 
-class SaltAndPepper: Filter{
+class SaltAndPepper: public Filter{
 private:
 	int percentage;
 public:
