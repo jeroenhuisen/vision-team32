@@ -4,9 +4,9 @@
 #include "stdafx.h"
 #include "basetimer.h"
 #include "SaltAndPeppah.h"
-//#include "MedianFilter.h"
-//#include "MaxiumumFilter.h"
-//#include "MiniumumFilter.h"
+#include "MedianFilter.h"
+#include "MaxiumumFilter.h"
+#include "MiniumumFilter.h"
 
 #include "ImageV2.h"
 #include "Histogram.h" 
@@ -27,12 +27,13 @@ int main(int argc, char* argv[])
 		SaltAndPepper sap(image, 5);
 		string newFilename = "noise_";
 		newFilename += image.GetFilename();
-		sap.saveImage(newFilename.c_str());
+		sap.getEditedImage().SaveImage(newFilename.c_str());
 
 		Histogram His(image);
 		His.MakeAGrayHistogram(256);
 		His.SaveHistogram("test");
-		/*CImg<unsigned char> noiseImage = sap.getImage();
+		string filename = image.GetFilename();
+		Image noiseImage = sap.getImage();
 		MedianFilter mf(noiseImage, 3);
 		string newImage = "median_";
 		newImage += filename;
@@ -45,7 +46,7 @@ int main(int argc, char* argv[])
 		string newmaxImage = "max_";
 		newmaxImage += filename;
 		maxf.saveImage(newmaxImage.c_str());
-		*/
+		
 
 		bt.stop();
 		cout << bt.elapsedSeconds();
