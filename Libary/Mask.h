@@ -22,7 +22,7 @@ public:
 	//Returns the mask
 	//
 	//The function will return the mask and calculate the values according to x,y and channel.
-	//X and y are the x and y coordinates of the mid pixel.
+	//X and y are the x and y coordinates of the mid pixel. The mask will be checked if it will exceed the image size.
 	//Channel is the channel of the image which the mask should be applied.
 	//It returns mask, which contains the mask from topleft to rightbottom.
 	unsigned char * getMask(int x, int y, int channel);
