@@ -11,12 +11,21 @@ Mask::~Mask(){
 }
 
 unsigned char * Mask::getMask(int x, int y, int channel){
-	int filterNumber = 0;//used for saving the mask from left to right in mask.
-	for (int filterY = -(size - 1) / 2; filterY <= (size - 1) / 2; filterY++){//Controls y starts from the top of the mask ends at the bottom
-		for (int filterX = -(size - 1) / 2; filterX <= (size - 1) / 2; filterX++){//Controls x starts from the left of the mask ends at the right
-			mask[filterNumber] = *image.Data(x + filterX, y + filterY, channel);
-			filterNumber++;
+	if (image.Height() < y + size / 2 || image.Width() < x + size / 2){
+		int filterNumber = 0;//used for saving the mask from left to right in mask.
+		for (int filterY = -(size - 1) / 2; filterY <= (size - 1) / 2; filterY++){//Controls y starts from the top of the mask ends at the bottom
+			for (int filterX = -(size - 1) / 2; filterX <= (size - 1) / 2; filterX++){//Controls x starts from the left of the mask ends at the right
+				mask[filterNumber] = *image.Data(x + filterX, y + filterY, channel);
+				filterNumber++;
+			}
 		}
+		return mask;
 	}
-	return mask;
+	else{
+		std::cerr << "The used mask isn't valid, it exceeds the image size.";
+		for (int i = 0; i < size*size; i++){
+			mask[i] = 0;
+		}
+		return mask;
+	}
 }

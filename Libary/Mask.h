@@ -1,4 +1,5 @@
 #include "ImageV2.h"
+#include <iostream>
 
 class Mask{
 private:
