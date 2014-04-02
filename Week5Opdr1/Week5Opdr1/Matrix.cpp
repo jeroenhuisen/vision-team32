@@ -251,24 +251,28 @@ void Matrix::RotatieAA(float f){
 			*(p2 + x) = 0;
 		}
 	}
-	for (int y = 0; y < image.Height(); y++){
-		for (int x = image.Width() - 1; x >= 0; x--){
+	for (int y = 1; y < image.Height() - 1; y++){
+		for (int x = 1; x < image.Width() - 1; x++){
 			//for (int x = 0; x < image.Width(); x++){
 			float X = (cos(f) * x) - (sin(f) * y);
 			float Y = (sin(f) * x) + (cos(f) * y);
+			int a = X;
+			int b = Y;
+			float dx = X - a;
+			float dy = Y - b;
 			//std::cout << X << ' ' << Y << '\n';
 
-			float pRed = *image.Data(x, y, 0) + (*image.Data(x + 1, y, 0) - *image.Data(x, y, 0));
-			float qRed = *image.Data(x, y + 1, 0) + (*image.Data(x + 1, y + 1, 0) - *image.Data(x, y + 1, 0));
-			float fRed = pRed + (qRed - pRed);
+			float pRed = *image.Data(x, y, 0) + (*image.Data(x + 1, y, 0) - *image.Data(x, y, 0)) * dx;
+			float qRed = *image.Data(x, y + 1, 0) + (*image.Data(x + 1, y + 1, 0) - *image.Data(x, y + 1, 0)) * dy;
+			float fRed = pRed + (qRed - pRed) * dy;
 
-			float pGreen = *image.Data(x, y, 1) + (*image.Data(x + 1, y, 1) - *image.Data(x, y, 1));
-			float qGreen = *image.Data(x, y + 1, 1) + (*image.Data(x + 1, y + 1, 1) - *image.Data(x, y + 1, 1));
-			float fGreen = pGreen + (qGreen - pGreen);
+			float pGreen = *image.Data(x, y, 1) + (*image.Data(x + 1, y, 1) - *image.Data(x, y, 1)) * dx;
+			float qGreen = *image.Data(x, y + 1, 1) + (*image.Data(x + 1, y + 1, 1) - *image.Data(x, y + 1, 1)) * dy;
+			float fGreen = pGreen + (qGreen - pGreen) * dy;
 
-			float pBlue = *image.Data(x, y, 2) + (*image.Data(x + 1, y, 2) - *image.Data(x, y, 2));
-			float qBlue = *image.Data(x, y + 1, 2) + (*image.Data(x + 1, y + 1, 2) - *image.Data(x, y + 1, 2));
-			float fBlue = pBlue + (qBlue - pBlue);
+			float pBlue = *image.Data(x, y, 2) + (*image.Data(x + 1, y, 2) - *image.Data(x, y, 2)) * dx;
+			float qBlue = *image.Data(x, y + 1, 2) + (*image.Data(x + 1, y + 1, 2) - *image.Data(x, y + 1, 2)) * dy;
+			float fBlue = pBlue + (qBlue - pBlue) * dy;
 
 			if (X >= 0 && X < image.Width() && Y >= 0 && Y < image.Height()){
 				*editedImage.Data(X, Y, 0) = fRed;
