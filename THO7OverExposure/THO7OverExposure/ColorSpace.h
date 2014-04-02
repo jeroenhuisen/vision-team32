@@ -1,3 +1,7 @@
+/*
+Jeroen Huisen
+When it works this file will be cleaned and maded usefull
+*/
 #ifndef COLORSPACE_H
 #define COLORSPACE_H
 #include "ImageV2.h"
@@ -10,25 +14,25 @@ private:
 	double* RGBtoXYZ(unsigned char R, unsigned char G, unsigned char B);
 	float* XYZtoLAB(float x, float y, float z);
 
-	char * A;
-	char * B;
+	float * A;
+	float * B;
 public:
 	ColorSpace(Image img);
 	void ToXYZ();
 	void ToLAB();
 	void ToRGB();
 	
-	char * getA(){
+	float * getA(){
 		return A;
 	}
-	char * getB(){
+	float * getB(){
 		return B;
 	}
 
-	void setA(char * Ab){
+	void setA(float * Ab){
 		A = Ab;
 	}
-	void setB(char * Bb){
+	void setB(float * Bb){
 		B = Bb;
 	}
 	void Test();

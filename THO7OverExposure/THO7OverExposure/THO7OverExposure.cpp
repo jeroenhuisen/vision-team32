@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 	ColorSpace cs(img);
 	cs.ToXYZ();
 	cs.ToLAB();
-	//cs.Test();
+	cs.Test();
 	cs.getEditedImage().SaveImage("dikkiedik.bmp");
 	img = cs.getEditedImage();
 	ColorSpace csTEST(img);

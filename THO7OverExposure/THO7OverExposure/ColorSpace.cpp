@@ -1,9 +1,14 @@
+/*
+Jeroen Huisen
+When it works this file will be cleaned and maded usefull
+*/
+
 #include "stdafx.h"
 #include "ColorSpace.h"-
 
 ColorSpace::ColorSpace(Image img):Filter(img){
-	A = new char[img.Height() * img.Width()];
-	B = new char[img.Height() * img.Width()];
+	A = new float[img.Height() * img.Width()];
+	B = new float[img.Height() * img.Width()];
 }
 
 float * XYZtoRGB(double X, double Y, double Z)
@@ -77,11 +82,13 @@ float * XYZtoRGB(double X, double Y, double Z)
 }
 
 
-float * ToColorLAB(int  L, int  A, int B)
+float * ToColorLAB(float  L, float  A, float B)
 {
 	float y = (L + 16.0) / 116.0;
 	float x = A / 500.0 + y;
 	float z = y - B / 200.0;
+
+	//std::cout << x << "\n" << y << "\n" << z << "\n\n";
 
 	float x3 = x * x * x;
 	float z3 = z * z * z;
@@ -98,10 +105,54 @@ float * ToColorLAB(int  L, int  A, int B)
 	return XYZtoRGB(X,Y,Z);
 }
 
+float * ToColorLABTEST(float  L, float  A, float B)
+{
+	float y = (L + 16.0) / 116.0;
+	float x = A / 500.0 + y;
+	float z = y - B / 200.0;
+
+	//std::cout << x << "\n" << y << "\n" << z << "\n\n";
+
+	float x3 = x * x * x;
+	float y3 = y * y * y;
+	float z3 = z * z * z;
+
+	float X = 95.047;
+	float Y = 100.000;
+	float Z = 108.883;
+
+	if (x3 > 0.008856){
+		X = X* x3;
+	}
+	else{
+		X = X * ((x - 16.0 / 116.0) / 7.787);
+	}
+	if (y3 > 0.008856){
+		Y = Y * y3;
+	}
+	else{
+		Y = Y * ((y - 16.0 / 116.0) / 7.787);
+	}
+	if (z3 > 0.008856){
+		Z = Z * z3;
+	}
+	else{
+		Z = Z * ((z - 16.0 / 116.0) / 7.787);
+	}
+	//X = X * (x3 > (216 / 24389) ? x3 : (x - 16.0 / 116.0) / 7.787);
+	//Y = Y * (L > ((24389 / 27) * (216 / 24389)) ? pow(((L + 16.0) / 116.0), 3) : L / (24389 / 27));
+	//Z = Z * (z3 > (216 / 24389) ? z3 : (z - 16.0 / 116.0) / 7.787);
+
+	//std::cout << X << "\n" << Y << "\n" << Z << "\n";
+
+	return XYZtoRGB(X, Y, Z);
+}
+
 void ColorSpace::ToRGB(){
 	for (int y = 0; y < image.Height(); y++){
 		for (int x = 0; x < image.Width(); x++){
-			float* test = ToColorLAB(*image.Data(x, y, 0), *(A + x + x*y), *(B + x +x*y));
+			float* test = ToColorLABTEST(*image.Data(x, y, 0), A[x+x*y], *(B + x +x*y));
+			//float* test = ToColorLABTEST(*image.Data(x, y, 0),0,0);
 			*editedImage.Data(x, y, 0) = test[0];
 			*editedImage.Data(x, y, 1) = test[1];
 			*editedImage.Data(x, y, 2) = test[2];
@@ -148,7 +199,7 @@ double* ColorSpace::RGBtoXYZ(unsigned char R, unsigned char G, unsigned char B)
 	double * returnValue = new double[3];
 	returnValue[0] = var_R * 0.4124564 + var_G * 0.3575761 + var_B * 0.1804375;
 	returnValue[1] = var_R * 0.2126729 + var_G * 0.7151522 + var_B * 0.0721750;
-	returnValue[2] = var_R * 0.0193339 + var_G * 0.1191920 + var_B * 0.9503041;
+	returnValue[2] = var_R * 0*.0193339 + var_G * 0.1191920 + var_B * 0.9503041;
 
  
 	return returnValue;
@@ -168,6 +219,7 @@ void ColorSpace::ToXYZ(){
 
 float * ColorSpace::XYZtoLAB(float x, float y, float z)
 {
+	//std::cout << "\nXYZtoLAB\n";
 	float ref_X = 95.047;
 	float ref_Y = 100.000;
 	float ref_Z = 108.883;
@@ -175,6 +227,8 @@ float * ColorSpace::XYZtoLAB(float x, float y, float z)
 	float var_X = (float)x / (float)ref_X;         
 	float var_Y = (float)y / (float)ref_Y;        
 	float var_Z = (float)z / (float)ref_Z;  
+
+	//std::cout << var_X << "\n" << var_Y << "\n" << var_Z << "\n\n";
 
 	if (var_X > 0.008856){
 		var_X = pow(var_X,(1.0 / 3.0));
@@ -195,20 +249,14 @@ float * ColorSpace::XYZtoLAB(float x, float y, float z)
 		var_Z = (903.3 * var_Z + 16.0) / 116.0;
 	}
 
-	float* returnValue = new float[3];
-	returnValue[0] = round((116 * var_Y) - 16);
-	returnValue[1] = round(500 * (var_X - var_Y));
-	returnValue[2] = round(200 * (var_Y - var_Z));
+	//std::cout << var_X << "\n" << var_Y << "\n" << var_Z << "\n";
 
-	if (returnValue[0] >= 128 || returnValue[0] <= -128){
-		std::cout << returnValue[0];
-	}
-	if (returnValue[1] >= 128 || returnValue[1] <= -128){
-		std::cout << returnValue[1];
-	}
-	if (returnValue[2] >= 128 || returnValue[2] <= -128){
-		std::cout << returnValue[2];
-	}
+	float* returnValue = new float[3];
+	returnValue[0] = (116 * var_Y) - 16;
+	returnValue[1] = 500 * (var_X - var_Y);
+	returnValue[2] = 200 * (var_Y - var_Z);
+
+
 
 	return	returnValue;
 }
@@ -218,7 +266,7 @@ void ColorSpace::ToLAB(){
 		for (int x = 0; x < image.Width(); x++){
 			double* test = RGBtoXYZ(*image.Data(x, y, 0), *image.Data(x, y, 1), *image.Data(x, y, 2));
 			float* test2 = XYZtoLAB(test[0], test[1], test[2]);
-			*(A + x + x*y) = test2[1];
+			A[x + x*y] = test2[1];
 			*(B + x + x*y) = test2[2];
 			*editedImage.Data(x, y, 0) = test2[0];
 			*editedImage.Data(x, y, 1) = test2[1];
@@ -230,12 +278,14 @@ void ColorSpace::ToLAB(){
 
 
 void ColorSpace::Test(){
-	std::cout << (int)*image.Data(100, 100, 0) << "\n";
+/*	std::cout << (int)*image.Data(100, 100, 0) << "\n";
 	std::cout << (int)*image.Data(100, 100, 1) << "\n";
 	std::cout << (int)*image.Data(100, 100, 2) << "\n";
 
 	double* test = RGBtoXYZ(*image.Data(100, 100, 0), *image.Data(100, 100, 1), *image.Data(100, 100, 2));
+	*/
 
+	double * test = RGBtoXYZ(0, 20, 0);
 	std::cout << "\nRGB to XYZ:\n";
 	std::cout << test[0] << "\n";
 	std::cout << test[1] << "\n";
@@ -249,19 +299,14 @@ void ColorSpace::Test(){
 	std::cout << test2[2] << "\n";
 
 	std::cout << "\nLAB to RGB:\n";
-	float* test3 = ToColorLAB(test2[0], test2[1], test2[2]);
+	/*float* test3 = ToColorLAB(test2[0], test2[1], test2[2]);
+	std::cout << test3[0] << "\n";
+	std::cout << test3[1] << "\n";
+	std::cout << test3[2] << "\n";*/
+
+	float* test3 = ToColorLABTEST(test2[0], test2[1], test2[2]);
 
 	std::cout << test3[0] << "\n";
 	std::cout << test3[1] << "\n";
 	std::cout << test3[2] << "\n";
-
-
-	std::cout << "\nsome thingss now another test\n";
-
-	float * test4 = XYZtoRGB(test[0], test[1], test[2]);
-
-
-	std::cout << test4[0] << "\n";
-	std::cout << test4[1] << "\n";
-	std::cout << test4[2] << "\n\n";
 }
