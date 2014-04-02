@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	Alg Ag(image);
 	string newFname = "Beter_";
 	newFname += image.GetFilename();
-	Ag.Blue(200);
+	Ag.Laplacian();
 	Ag.SaveImg(newFname.c_str());
 
 	bt.stop();

@@ -17,5 +17,6 @@ public:
 	Alg(Image image);
 	void SaveImg(const char* filename);
 	void Blue(int maxBlue);
+	void Laplacian();
 };
 #endif

@@ -35,3 +35,22 @@ void Alg::Blue(int maxBlue){
 		}
 	}
 }
+
+void Alg::Laplacian(){
+	int temp_blue_1;
+	int temp_blue_2;
+	for (int y = 1; y < image.Height() - 1; y++){
+		for (int x = 1; x < image.Width() - 1; x++){
+			int temp_blue_1 = *image.Data(x + 1, y, 2) + *image.Data(x - 1, y, 2) - 2 * *image.Data(x, y, 2);
+			int temp_blue_2 = *image.Data(x + 2, y, 2) + *image.Data(x, y, 2) - 2 * *image.Data(x + 1, y, 2);
+			if ((temp_blue_1) < 0 && (temp_blue_2 > 0) || (temp_blue_1 > 0) && (temp_blue_2 < 0)){
+				*editedImage.Data(x, y, 0) = 255;
+				*editedImage.Data(x, y, 1) = 0;
+				*editedImage.Data(x, y, 1) = 0;
+				*editedImage.Data(x + 1, y, 0) = 255;
+				*editedImage.Data(x + 1, y, 1) = 0;
+				*editedImage.Data(x + 1, y, 1) = 0;
+			}
+		}
+	}
+}
