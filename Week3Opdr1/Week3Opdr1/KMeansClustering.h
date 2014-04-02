@@ -6,8 +6,6 @@
 
 class KMeansClustering : public Filter{
 private:
-	Image image;
-	Image editedImage;
 
 	int kValue;
 	unsigned char ** cluster;

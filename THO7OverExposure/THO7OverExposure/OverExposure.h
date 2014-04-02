@@ -7,8 +7,6 @@
 
 class OverExposure : public Filter{
 private:
-	Image image;
-	Image editedImage;
 public:
 	OverExposure(Image img);
 	void M();

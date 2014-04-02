@@ -2,8 +2,6 @@
 #include "AutoThreshold.h"
 
 AutoThreshold::AutoThreshold(Image img): Filter(img){
-	image = img;
-	editedImage = Image(img.Width(), img.Height(), img.GetChannels());
 }
 
 void AutoThreshold::Threshold(int threshold){

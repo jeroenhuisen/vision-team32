@@ -3,8 +3,6 @@
 #include <iostream>
 
 OverExposure::OverExposure(Image img) :Filter(img){
-	image = img;
-	editedImage = Image(img.Width(), img.Height(), img.GetChannels());
 }
 
 
@@ -48,21 +46,37 @@ void OverExposure::ThresholdRepair(int threshold){
 	for (int y = 0; y < image.Height(); y++){
 		for (int x = 0; x < image.Width(); x++){
 			int Li = *image.Data(x, y, 0);
+			*editedImage.Data(x, y, 0) = Li;
+			*editedImage.Data(x, y, 1) = Li;
+			*editedImage.Data(x, y, 2) = Li;
+		}
+	}
+
+	editedImage.SaveImage("testOverExposureThresholdBEFORERepair.bmp");
+
+	for (int y = 0; y < image.Height(); y++){
+		for (int x = 0; x < image.Width(); x++){
+			int Li = *image.Data(x, y, 0);
 			if (Li > threshold){
 				*editedImage.Data(x, y, 0) = Li - threshold/10; //Not a real repair...
-				*editedImage.Data(x, y, 1) = Li - threshold / 10;
-				*editedImage.Data(x, y, 2) = Li - threshold / 10;
+				*editedImage.Data(x, y, 1) = *image.Data(x, y, 1);
+				*editedImage.Data(x, y, 2) = *image.Data(x, y, 2);
+				//*editedImage.Data(x, y, 1) = Li - threshold / 10;
+				//*editedImage.Data(x, y, 2) = Li - threshold / 10;
 			}
 			else if (Li > threshold - Li / 10){
-				std::cout << Li - (Li - (threshold - threshold / 10)) << "\n";
 				*editedImage.Data(x, y, 0) = Li - (Li - ( threshold - threshold / 10));
-				*editedImage.Data(x, y, 1) = Li - (Li - (threshold - threshold / 10));
-				*editedImage.Data(x, y, 2) = Li - (Li - (threshold - threshold / 10));
+				*editedImage.Data(x, y, 1) = *image.Data(x, y, 1);
+				*editedImage.Data(x, y, 2) = *image.Data(x, y, 2);
+				//*editedImage.Data(x, y, 1) = Li - (Li - (threshold - threshold / 10));
+				//*editedImage.Data(x, y, 2) = Li - (Li - (threshold - threshold / 10));
 			}
 			else{
 				*editedImage.Data(x, y, 0) = Li;
-				*editedImage.Data(x, y, 1) = Li;
-				*editedImage.Data(x, y, 2) = Li;
+				*editedImage.Data(x, y, 1) = *image.Data(x, y, 1);
+				*editedImage.Data(x, y, 2) = *image.Data(x, y, 2);
+				//*editedImage.Data(x, y, 1) = Li;
+				//*editedImage.Data(x, y, 2) = Li;
 			}
 		}
 	}
@@ -77,5 +91,4 @@ void OverExposure::ThresholdRepair(int threshold){
 	226 -> 226 -(226-(250-250/10)));
 */
 	
-
 

@@ -6,8 +6,6 @@
 #define maxIterations 20;
 
 KMeansClustering::KMeansClustering(Image img, int k) : Filter(img){
-	image = img;
-	editedImage = img;
 	kValue = k;
 }
 

@@ -52,6 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Jeroen\Source\Repos\vision-team32\Libary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,28 +80,27 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basetimer.h" />
-    <ClInclude Include="CImg.h" />
-    <ClInclude Include="ColorFilter.h" />
-    <ClInclude Include="Filter.h" />
-    <ClInclude Include="Histogram.h" />
-    <ClInclude Include="ImageV2.h" />
-    <ClInclude Include="MaxiumumFilter.h" />
-    <ClInclude Include="MedianFilter.h" />
-    <ClInclude Include="MiniumumFilter.h" />
-    <ClInclude Include="SaltAndPeppah.h" />
+    <ClInclude Include="..\..\Libary\basetimer.h" />
+    <ClInclude Include="..\..\Libary\Filter.h" />
+    <ClInclude Include="..\..\Libary\Histogram.h" />
+    <ClInclude Include="..\..\Libary\ImageV2.h" />
+    <ClInclude Include="..\..\Libary\MaxiumumFilter.h" />
+    <ClInclude Include="..\..\Libary\MedianFilter.h" />
+    <ClInclude Include="..\..\Libary\MiniumumFilter.h" />
+    <ClInclude Include="..\..\Libary\NeighbourhoodFilter.h" />
+    <ClInclude Include="..\..\Libary\SaltAndPeppah.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="basetimer.cpp" />
-    <ClCompile Include="ColorFilter.cpp" />
-    <ClCompile Include="Histogram.cpp" />
-    <ClCompile Include="ImageV2.cpp" />
-    <ClCompile Include="MaxiumumFilter.cpp" />
-    <ClCompile Include="MedianFilter.cpp" />
-    <ClCompile Include="MiniumumFilter.cpp" />
-    <ClCompile Include="SaltAndPeppah.cpp" />
+    <ClCompile Include="..\..\Libary\basetimer.cpp" />
+    <ClCompile Include="..\..\Libary\Histogram.cpp" />
+    <ClCompile Include="..\..\Libary\ImageV2.cpp" />
+    <ClCompile Include="..\..\Libary\MaxiumumFilter.cpp" />
+    <ClCompile Include="..\..\Libary\MedianFilter.cpp" />
+    <ClCompile Include="..\..\Libary\MiniumumFilter.cpp" />
+    <ClCompile Include="..\..\Libary\NeighboorhoodFilter.cpp" />
+    <ClCompile Include="..\..\Libary\SaltAndPeppah.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

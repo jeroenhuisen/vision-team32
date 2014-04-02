@@ -6,8 +6,6 @@
 
 class AutoThreshold : public Filter{
 private:
-	Image image;
-	Image editedImage;
 
 public:
 	AutoThreshold(Image img);
