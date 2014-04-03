@@ -6,6 +6,7 @@
 
 #include "ImageV2.h"
 #include "ColorFilter.h"
+#include "Histogram.h"
 
 #include <iostream>
 #include <string>
@@ -28,23 +29,41 @@ int main(int argc, char* argv[])
 
 	bt.stop();
 	cout << "Bestand ingelezen in: " << bt.elapsedSeconds() << " seconden\n";
-
+	bt.reset();
 	bt.start();
-
-	bt.stop();
-	cout << "Grijs gemaakt in: " << bt.elapsedSeconds() << " seconden\n";
-
-	bt.start();
+	
 	ColorFilter cf(image);
 	cf.makeGrey();
 	image = cf.getEditedImage();
+
+	bt.stop();
+	cout << "Grijs gemaakt in: " << bt.elapsedSeconds() << " seconden\n";
+	bt.reset();
+	bt.start();
+
 	string newFilename = "grey_";
 	newFilename += image.GetFilename();
 	image.SaveImage(newFilename.c_str());
 
 	bt.stop();
 	cout << "Bestand opgeslagen in: " << bt.elapsedSeconds() << " seconden\n";
+	bt.reset();
+	bt.start();
 
+	Histogram h(image);
+	h.MakeAGrayHistogram(256);
+	string histogramFilename256 = "Histogram256_";
+	histogramFilename256 += image.GetFilename();
+	h.SaveHistogram(histogramFilename256.c_str());
+
+	h.MakeAGrayHistogram(10);
+	string histogramFilename10 = "Histogram10_";
+	histogramFilename10 += image.GetFilename();
+	h.SaveHistogram(histogramFilename10.c_str());
+
+	bt.stop();
+	cout << "Grijs gemaakt in: " << bt.elapsedSeconds() << " seconden\n";
+	bt.reset();
 	system("pause");
 	return 0;
 }
