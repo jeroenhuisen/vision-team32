@@ -7,6 +7,7 @@
 #include "ImageV2.h"
 #include "ColorFilter.h"
 #include "Histogram.h"
+#include "EqualizeFilter.h"
 
 #include <iostream>
 #include <string>
@@ -23,6 +24,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 	BaseTimer bt;
+	BaseTimer btTotal;
+	btTotal.start();
 	bt.start();
 
 	Image image(argv[1]);
@@ -51,19 +54,34 @@ int main(int argc, char* argv[])
 	bt.start();
 
 	Histogram h(image);
-	h.MakeAGrayHistogram(256);
+	h.MakeAGreyHistogram(256);
 	string histogramFilename256 = "Histogram256_";
 	histogramFilename256 += image.GetFilename();
 	h.SaveHistogram(histogramFilename256.c_str());
 
-	h.MakeAGrayHistogram(10);
+	h.MakeAGreyHistogram(10);
 	string histogramFilename10 = "Histogram10_";
 	histogramFilename10 += image.GetFilename();
 	h.SaveHistogram(histogramFilename10.c_str());
 
 	bt.stop();
-	cout << "Grijs gemaakt in: " << bt.elapsedSeconds() << " seconden\n";
+	cout << "Histogrammen gemaakt + opgeslagen in: " << bt.elapsedSeconds() << " seconden\n";
 	bt.reset();
+	bt.start();
+	
+	EqualizeFilter ef(image);
+	ef.Equalize(255);
+
+	string equalizedFilename = "equalized_";
+	equalizedFilename += image.GetFilename();
+	ef.getEditedImage().SaveImage(equalizedFilename.c_str());
+
+	bt.stop();
+	bt.reset();
+
+	btTotal.stop();
+	cout << "Totaal duurde alles: " << btTotal.elapsedSeconds() << " seconden\n";
+
 	system("pause");
 	return 0;
 }

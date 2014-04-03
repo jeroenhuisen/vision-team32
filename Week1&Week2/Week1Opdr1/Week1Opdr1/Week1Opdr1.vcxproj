@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Libary\basetimer.h" />
     <ClInclude Include="..\..\..\Libary\ColorFilter.h" />
+    <ClInclude Include="..\..\..\Libary\EqualizeFilter.h" />
     <ClInclude Include="..\..\..\Libary\Filter.h" />
     <ClInclude Include="..\..\..\Libary\Histogram.h" />
     <ClInclude Include="..\..\..\Libary\ImageV2.h" />
@@ -91,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Libary\basetimer.cpp" />
     <ClCompile Include="..\..\..\Libary\ColorFilter.cpp" />
+    <ClCompile Include="..\..\..\Libary\EqualizeFilter.cpp" />
     <ClCompile Include="..\..\..\Libary\Histogram.cpp" />
     <ClCompile Include="..\..\..\Libary\ImageV2.cpp" />
     <ClCompile Include="stdafx.cpp">
