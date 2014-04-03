@@ -132,6 +132,9 @@ const char * Image::GetFilename(){
 	return filename;
 }
 
+void Image::SetFilename(const char * filename){
+	Image::filename = filename;
+}
 
 void Image::SaveImage(const char * filename){
 	CImg<unsigned char> image(width, height, 1, channels);
