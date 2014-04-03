@@ -76,7 +76,37 @@ int main(int argc, char* argv[])
 	equalizedFilename += image.GetFilename();
 	ef.getEditedImage().SaveImage(equalizedFilename.c_str());
 
+	Histogram hEqualized(ef.getEditedImage());
+	hEqualized.MakeAGreyHistogram();
+	hEqualized.SaveHistogram(equalizedFilename.c_str());
+
 	bt.stop();
+	cout << "Equalize + save image + histogram equalized image: " << bt.elapsedSeconds() << " seconden\n";
+	bt.reset();
+	bt.start();
+	
+	string redImage = "R_";
+	redImage += cf.getEditedImage().GetFilename();
+	cf.makeRed();
+	cf.getEditedImage().SaveImage(redImage.c_str());	
+	string greenImage = "G_";
+	greenImage += cf.getEditedImage().GetFilename();
+	cf.makeGreen();
+	cf.getEditedImage().SaveImage(greenImage.c_str());
+	string blueImage = "B_";
+	blueImage += cf.getEditedImage().GetFilename();
+	cf.makeBlue();
+	cf.getEditedImage().SaveImage(blueImage.c_str());
+
+	bt.stop();
+	cout << "RGB histogram: " << bt.elapsedSeconds() << " seconden\n";
+	bt.reset();
+	bt.start();
+	
+	h.MakeARGBHistogram(10);
+
+	bt.stop();
+	cout << "RGB histogram: " << bt.elapsedSeconds() << " seconden\n";
 	bt.reset();
 
 	btTotal.stop();
