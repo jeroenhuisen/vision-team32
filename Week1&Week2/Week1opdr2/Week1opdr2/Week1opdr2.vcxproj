@@ -85,7 +85,9 @@
     <ClInclude Include="..\..\..\Libary\Filter.h" />
     <ClInclude Include="..\..\..\Libary\ImageV2.h" />
     <ClInclude Include="..\..\..\Libary\Mask.h" />
+    <ClInclude Include="..\..\..\Libary\MaxiumumFilter.h" />
     <ClInclude Include="..\..\..\Libary\MedianFilter.h" />
+    <ClInclude Include="..\..\..\Libary\MiniumumFilter.h" />
     <ClInclude Include="..\..\..\Libary\SaltAndPeppah.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -93,7 +95,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Libary\basetimer.cpp" />
     <ClCompile Include="..\..\..\Libary\ImageV2.cpp" />
+    <ClCompile Include="..\..\..\Libary\MaxiumumFilter.cpp" />
     <ClCompile Include="..\..\..\Libary\MedianFilter.cpp" />
+    <ClCompile Include="..\..\..\Libary\MiniumumFilter.cpp" />
     <ClCompile Include="..\..\..\Libary\SaltAndPeppah.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

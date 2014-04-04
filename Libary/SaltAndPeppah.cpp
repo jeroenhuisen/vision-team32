@@ -20,12 +20,12 @@ void SaltAndPepper::setNoise(int per){
 	for (int n = 0; n < image.Width()*image.Height() / 100 * percentage; ++n){//This will not result in excatly percentage because its possible 1 pixel will be edited multiple times. The percentage will be lower in reality
 		x = distr(eng);//without this it looks like confetti because the pixels will change so only 1 color will change.
 		y = distr2(eng);
-		if (distrColor(eng) == 0){
+		if (distrColor(eng) == 0){//black
 			*editedImage.Data(x, y, 0) = 0;
 			*editedImage.Data(x, y, 1) = 0;
 			*editedImage.Data(x, y, 2) = 0;
 		}
-		else{
+		else{//white
 			*editedImage.Data(x, y, 0) = 255;
 			*editedImage.Data(x, y, 1) = 255;
 			*editedImage.Data(x, y, 2) = 255;
