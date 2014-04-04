@@ -1,14 +1,17 @@
-#include "CImg.h"
+#ifndef MEDIANFILTER_H
+#define MEDIANFILTER_H
+#include "Filter.h"
 
-using namespace cimg_library;
-class MedianFilter{
-private:
-	CImg<unsigned char> image;
-	CImg<unsigned char> editedImage;
-	int compare(const void * a, const void * b);
+class MedianFilter: public Filter{
 public:
-	MedianFilter(CImg<unsigned char> img, int value);
-	void filter(int value);
-	void filterHistogram(int value);
-	void saveImage(const char * filename);
+	//Constructor MedianFiltering
+	//
+	//Constructor will automaticly call filterHistogram and will apply median filtering on the image img.
+	MedianFilter(Image img, int value);
+	//MedianFiltering based on histogram
+	//
+	//This function will use a histogram to calculate and apply a median filter
+	//Value is the size of the mask.
+	void FilterHistogram(int value);
 };
+#endif

@@ -6,6 +6,7 @@
 
 #include "ImageV2.h"
 #include "SaltAndPeppah.h"
+#include "MedianFilter.h"
 
 #include <iostream>
 #include <string>
@@ -37,12 +38,25 @@ int main(int argc, char* argv[])
 	string noiseFilename = "noise_";
 	noiseFilename += image.GetFilename();
 	sap.getEditedImage().SaveImage(noiseFilename.c_str());
-	
+
+	Image noiseImage = sap.getEditedImage();
 
 	bt.stop();
 	cout << "Noise toegevoegd en opgeslagen in: " << bt.elapsedSeconds() << " seconden\n";
 	bt.reset();
-	
+	bt.start();
+
+	MedianFilter medF(noiseImage, 5);
+	//medF.Filter1(3);
+	string medianFilename = "median_";
+	medianFilename += noiseImage.GetFilename();
+	medF.getEditedImage().SaveImage(medianFilename.c_str());
+
+
+	bt.stop();
+	cout << "MedianFilter gebruikt en image opgeslagen in: " << bt.elapsedSeconds() << " seconden\n";
+	bt.reset();
+
 	btTotal.stop();
 	cout << "Totaal duurde alles: " << btTotal.elapsedSeconds() << " seconden\n";
 
