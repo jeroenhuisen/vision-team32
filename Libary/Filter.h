@@ -10,6 +10,7 @@ public:
 	Filter(Image img){
 		image = img;
 		editedImage = Image(img.Width(), img.Height(), img.GetChannels());
+		editedImage.SetFilename(img.GetFilename());
 	}
 	Image getImage(){
 		return image;
