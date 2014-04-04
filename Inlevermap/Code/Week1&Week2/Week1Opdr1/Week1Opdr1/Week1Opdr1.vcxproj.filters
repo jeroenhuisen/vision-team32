@@ -24,22 +24,22 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\basetimer.h">
+    <ClInclude Include="..\..\..\..\..\Libary\basetimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\Filter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\ColorFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\Histogram.h">
+    <ClInclude Include="..\..\..\..\..\Libary\EqualizeFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\ImageV2.h">
+    <ClInclude Include="..\..\..\..\..\Libary\Filter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\ColorFilter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\Histogram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\EqualizeFilter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\ImageV2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,19 +50,19 @@
     <ClCompile Include="Week1Opdr1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\basetimer.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\basetimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\Histogram.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\ColorFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\ImageV2.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\EqualizeFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\ColorFilter.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\Histogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\EqualizeFilter.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\ImageV2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

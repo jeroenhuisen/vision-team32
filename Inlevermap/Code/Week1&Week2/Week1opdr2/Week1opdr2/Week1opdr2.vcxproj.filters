@@ -24,31 +24,34 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\SaltAndPeppah.h">
+    <ClInclude Include="..\..\..\..\..\Libary\basetimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\basetimer.h">
+    <ClInclude Include="..\..\..\..\..\Libary\CImg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\CImg.h">
+    <ClInclude Include="..\..\..\..\..\Libary\ColorFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\Filter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\EqualizeFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\ImageV2.h">
+    <ClInclude Include="..\..\..\..\..\Libary\Filter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\Mask.h">
+    <ClInclude Include="..\..\..\..\..\Libary\Mask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\MedianFilter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\MaxiumumFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\MaxiumumFilter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\MedianFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Libary\MiniumumFilter.h">
+    <ClInclude Include="..\..\..\..\..\Libary\MiniumumFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Libary\SaltAndPeppah.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,22 +62,22 @@
     <ClCompile Include="Week1opdr2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\SaltAndPeppah.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\basetimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\basetimer.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\ImageV2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\ImageV2.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\MaxiumumFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\MedianFilter.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\MedianFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\MaxiumumFilter.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\MiniumumFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Libary\MiniumumFilter.cpp">
+    <ClCompile Include="..\..\..\..\..\Libary\SaltAndPeppah.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
