@@ -23,7 +23,8 @@ int main(int argc, char* argv[])
 	//Mx.Translatie(-50, 25);
 	//Mx.Shear(-0.5);
 	//Mx.AA1();
-	Mx.RotatieAA(-0.2);
+	//Mx.RotatieAA(0.2);
+	Mx.Three_Way_Shear(-0.2);
 	Mx.SaveImg(newFname.c_str());
 
 	bt.stop();
