@@ -23,10 +23,12 @@ public:
 	Histogram(Image image);
 	void MakeAGreyHistogram(int value);
 	void MakeARGBHistogram(int value);
-	int* getGreyHistogram();
+	void MakeAHistogram(int value, int channel);
+	/*int* getGreyHistogram();
 	int* getHistogramRed();
 	int* getHistogramGreen();
-	int* getHistogramBlue();
+	int* getHistogramBlue();*/
+	int * getHistogram();
 	int getTotal();
 	void SaveHistogram(const char * filename);
 };

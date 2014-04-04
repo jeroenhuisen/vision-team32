@@ -34,6 +34,27 @@ void Histogram::MakeAGreyHistogram(int value){
 	}
 }
 
+void Histogram::MakeAHistogram(int value, int channel){
+	if ((value > 0) && (value <= 256)){
+		val = value;
+		aHistogram = new int[value];
+
+		for (int i = 0; i < value; i++){
+			aHistogram[i] = 0;
+		}
+
+		for (int r = 0; r < image.Height(); r++){
+			for (int c = 0; c < image.Width(); c++){
+				aHistogram[(int)((*image.Data(c,r, channel) * value) / 256)]++;
+			}
+		}
+	}
+	else{
+		std::cerr << "value klopt niet";
+	}
+}
+
+
 void Histogram::MakeARGBHistogram(int value){
 	if ((value > 0) && (value <= 256)){
 		val = value;

@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 	ef.getEditedImage().SaveImage(equalizedFilename.c_str());
 
 	Histogram hEqualized(ef.getEditedImage());
-	hEqualized.MakeAGreyHistogram();
+	hEqualized.MakeAGreyHistogram(255);
 	hEqualized.SaveHistogram(equalizedFilename.c_str());
 
 	bt.stop();
