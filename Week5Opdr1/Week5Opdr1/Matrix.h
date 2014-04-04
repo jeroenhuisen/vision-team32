@@ -13,6 +13,8 @@ class Matrix{
 private:
 	Image image;
 	Image editedImage;
+	Image iksloophetImage;
+	Image ikhebhetalgeslooptImage;
 	int a0;
 	int a1;
 	int a2;
@@ -30,5 +32,6 @@ public:
 	void Shear(float s);
 	void RotatieAA(float f);
 	void SaveImg(const char* filename);
+	void Three_Way_Shear(float s);
 };
 #endif
