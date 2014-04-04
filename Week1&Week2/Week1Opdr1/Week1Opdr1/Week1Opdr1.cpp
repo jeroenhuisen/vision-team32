@@ -54,12 +54,12 @@ int main(int argc, char* argv[])
 	bt.start();
 
 	Histogram h(image);
-	h.MakeAGreyHistogram(256);
+	h.MakeAHistogram(256, 0);
 	string histogramFilename256 = "Histogram256_";
 	histogramFilename256 += image.GetFilename();
 	h.SaveHistogram(histogramFilename256.c_str());
 
-	h.MakeAGreyHistogram(10);
+	h.MakeAHistogram(10, 0);
 	string histogramFilename10 = "Histogram10_";
 	histogramFilename10 += image.GetFilename();
 	h.SaveHistogram(histogramFilename10.c_str());
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 	ef.getEditedImage().SaveImage(equalizedFilename.c_str());
 
 	Histogram hEqualized(ef.getEditedImage());
-	hEqualized.MakeAGreyHistogram(255);
+	hEqualized.MakeAHistogram(255,0);
 	hEqualized.SaveHistogram(equalizedFilename.c_str());
 
 	bt.stop();
@@ -103,7 +103,13 @@ int main(int argc, char* argv[])
 	bt.reset();
 	bt.start();
 	
-	h.MakeARGBHistogram(10);
+	Histogram hColor(cf.getImage());
+	hColor.MakeAHistogram(10, 0);
+	hColor.SaveHistogram(redImage.c_str());
+	hColor.MakeAHistogram(10, 1);
+	hColor.SaveHistogram(greenImage.c_str());
+	hColor.MakeAHistogram(10, 2);
+	hColor.SaveHistogram(blueImage.c_str());
 
 	bt.stop();
 	cout << "RGB histogram: " << bt.elapsedSeconds() << " seconden\n";

@@ -29,6 +29,6 @@ void EqualizeFilter::EqualizeImage(int * histogram, int total){
 
 void EqualizeFilter::Equalize(int value){
 	Histogram h(image);
-	h.MakeAGreyHistogram(value);
-	EqualizeImage(h.getGreyHistogram(), h.getTotal());
+	h.MakeAHistogram(value,0);
+	EqualizeImage(h.getHistogram(), h.getTotal());
 }
