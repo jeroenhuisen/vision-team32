@@ -3,6 +3,7 @@
 #include <random>
 
 SaltAndPepper::SaltAndPepper(Image img, int per):Filter(img){
+	Copy();
 	setNoise(per);
 }
 
