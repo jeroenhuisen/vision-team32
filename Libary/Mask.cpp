@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "Mask.h"
+
 
 Mask::Mask(Image img, int s){
 	size = s;

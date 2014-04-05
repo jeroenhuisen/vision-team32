@@ -164,6 +164,9 @@ void ColorSpace::ToRGB(){
 
 double* ColorSpace::RGBtoXYZ(unsigned char R, unsigned char G, unsigned char B)
 {
+	R = 255;
+	G = 255;
+	B = 200;
 	double var_R = (double)((double)R / (double)255);        //R from 0 to 255
 	double var_G = (double)((double)G / (double)255);        //G from 0 to 255
 	double var_B = (double)((double)B / (double)255);        //B from 0 to 255
@@ -285,7 +288,7 @@ void ColorSpace::Test(){
 	double* test = RGBtoXYZ(*image.Data(100, 100, 0), *image.Data(100, 100, 1), *image.Data(100, 100, 2));
 	*/
 
-	double * test = RGBtoXYZ(0, 20, 0);
+	double * test = RGBtoXYZ(255, 20, 255);
 	std::cout << "\nRGB to XYZ:\n";
 	std::cout << test[0] << "\n";
 	std::cout << test[1] << "\n";

@@ -18,7 +18,7 @@ public:
 	Image(const char * filename, int channels);
 	Image(const char * filename);
 	Image(int width, int height, int channels);
-	Image(){}
+	Image(){};
 
 	unsigned char ** GetChannelsArray();
 	unsigned char * GetChannelArray(int channel);
@@ -31,6 +31,7 @@ public:
 	int Width();
 
 	const char * GetFilename();
+	void SetFilename(const char * filename);
 
 	void SaveImage(const char * filename);
 };

@@ -1,14 +1,17 @@
-#include "CImg.h"
+#ifndef MINFILTER_H
+#define MINFILTER_H
+#include "Filter.h"
 
-using namespace cimg_library;
-class MiniumumFilter{
-private:
-	CImg<unsigned char> image;
-	CImg<unsigned char> editedImage;
-	int compare(const void * a, const void * b);
+class MinFilter : public Filter{
 public:
-	MiniumumFilter(CImg<unsigned char> img, int value);
-	void filter(int value);
-	void filterHistogram(int value);
-	void saveImage(const char * filename);
+	//Constructor MinFiltering
+	//
+	//Constructor will automaticly call filterHistogram and will apply Min filtering on the image img.
+	MinFilter(Image img, int value);
+	//MinFiltering based on histogram
+	//
+	//This function will use a histogram to calculate and apply a Min filter
+	//Value is the size of the mask.
+	void FilterHistogram(int value);
 };
+#endif
