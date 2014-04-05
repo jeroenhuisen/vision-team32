@@ -45,11 +45,16 @@ void Alg::Laplacian(){
 			int temp_blue_2 = *image.Data(x + 2, y, 2) + *image.Data(x, y, 2) - 2 * *image.Data(x + 1, y, 2);
 			if ((temp_blue_1) < 0 && (temp_blue_2 > 0) || (temp_blue_1 > 0) && (temp_blue_2 < 0)){
 				*editedImage.Data(x, y, 0) = 255;
-				*editedImage.Data(x, y, 1) = 0;
-				*editedImage.Data(x, y, 1) = 0;
-				*editedImage.Data(x + 1, y, 0) = 255;
+				*editedImage.Data(x, y, 1) = 255;
+				*editedImage.Data(x, y, 1) = 255;
+				/**editedImage.Data(x + 1, y, 0) = 255;
 				*editedImage.Data(x + 1, y, 1) = 0;
-				*editedImage.Data(x + 1, y, 1) = 0;
+				*editedImage.Data(x + 1, y, 1) = 0;*/
+			}
+			else{
+				*editedImage.Data(x, y, 0) = *image.Data(x, y, 0);
+				*editedImage.Data(x, y, 1) = *image.Data(x, y, 1);
+				*editedImage.Data(x, y, 2) = *image.Data(x, y, 2);
 			}
 		}
 	}
