@@ -70,14 +70,14 @@ int main(int argc, char* argv[])
 	bt.start();
 	
 	EqualizeFilter ef(image);
-	ef.Equalize(255);
+	ef.Equalize(256);
 
 	string equalizedFilename = "equalized_";
 	equalizedFilename += image.GetFilename();
 	ef.getEditedImage().SaveImage(equalizedFilename.c_str());
 
 	Histogram hEqualized(ef.getEditedImage());
-	hEqualized.MakeAHistogram(255,0);
+	hEqualized.MakeAHistogram(256,0);
 	hEqualized.SaveHistogram(equalizedFilename.c_str());
 
 	bt.stop();
