@@ -15,6 +15,7 @@ private:
 	Het aanmaken van de afbeeldingen waar later naar de berekenen de waardes naar toe worden geschreven.
 	*/
 	Image image;
+	Image tempImage;
 	Image editedImage;
 	Image iksloophetImage;
 	Image ikhebhetalgeslooptImage;
@@ -84,5 +85,7 @@ public:
 	Op de plekken waarde afbeelding geen waardes meer heeft komen zwarte pixels.
 	*/
 	void Three_Way_Shear(float s);
+
+	void Scaling_And_Rotation(float s, float r);
 };
 #endif

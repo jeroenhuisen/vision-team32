@@ -21,10 +21,11 @@ int main(int argc, char* argv[])
 	//Mx.Rotatie(0.2);
 	//Mx.Scaling(-0.25);
 	//Mx.Translatie(-50, 25);
-	Mx.Shear(0.5);
+	//Mx.Shear(0.5);
 	//Mx.AA1();
-	//Mx.RotatieAA(0.2);
-	//Mx.Three_Way_Shear(-0.2);
+	Mx.RotatieAA(0.2);
+	//Mx.Three_Way_Shear(0.2);
+	//Mx.Scaling_And_Rotation(3.5, 0.2);
 	Mx.SaveImg(newFname.c_str());
 
 	bt.stop();
