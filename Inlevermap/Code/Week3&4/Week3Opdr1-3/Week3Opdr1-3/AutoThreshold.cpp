@@ -7,9 +7,9 @@ AutoThreshold::AutoThreshold(Image img): Filter(img){
 void AutoThreshold::Threshold(int threshold){
 	for (int y = 0; y < image.Height(); y++){
 		unsigned char * p = image.Data(0, y, 0);
-		unsigned char * ep0 = image.Data(0, y, 0);
-		unsigned char * ep1 = image.Data(0, y, 1);
-		unsigned char * ep2 = image.Data(0, y, 2);
+		unsigned char * ep0 = editedImage.Data(0, y, 0);
+		unsigned char * ep1 = editedImage.Data(0, y, 1);
+		unsigned char * ep2 = editedImage.Data(0, y, 2);
 		for (int x = 0; x < image.Width(); x++){
 			if(*(p + x) >= threshold){
 				*(ep0 + x) = 255;

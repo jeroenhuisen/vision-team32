@@ -6,10 +6,15 @@
 class ColorFilter: public Filter{
 private:
 public:
+	//input image, constructor colorfilter
 	ColorFilter(Image img);
+	//'make image red
 	void makeRed();
+	//make image green
 	void makeGreen();
+	//make image blue
 	void makeBlue();
+	//make image grey
 	void makeGrey();
 };
 #endif
