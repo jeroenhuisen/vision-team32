@@ -18,5 +18,6 @@ public:
 	void SaveImg(const char* filename);
 	void Blue(int maxBlue);
 	void Laplacian();
+	void Gradiant(int threshold, int l_b_x, int l_b_y, int r_o_x, int l_o_y);
 };
 #endif

@@ -17,8 +17,10 @@ int main(int argc, char* argv[])
 	Alg Ag(image);
 	string newFname = "Beter_";
 	newFname += image.GetFilename();
-	Ag.Laplacian();
+	//Ag.Laplacian();
+	Ag.Gradiant(50, 145, 145, 605, 235);
 	Ag.SaveImg(newFname.c_str());
+	
 
 	bt.stop();
 	cout << bt.elapsedSeconds() << '\n';
