@@ -6,8 +6,8 @@
 Matrix::Matrix(Image image){
 	Matrix::image = image;
 	Matrix::editedImage = Image(image.Width(), image.Height(), image.GetChannels());
-	Matrix::iksloophetImage = Image(image.Width(), image.Height(), image.GetChannels());
-	Matrix::ikhebhetalgeslooptImage = Image(image.Width(), image.Height(), image.GetChannels());
+	Matrix::editedImage_2 = Image(image.Width(), image.Height(), image.GetChannels());
+	Matrix::editedImage_3 = Image(image.Width(), image.Height(), image.GetChannels());
 }
 
 void Matrix::Transformatie(float a0, float a1, int a2, float b0, float b1, int b2){
@@ -177,9 +177,9 @@ void Matrix::Three_Way_Shear(float s){
 	float X;
 	float Y;
 	for (int y = 0; y < image.Height(); y++){
-		unsigned char *h = iksloophetImage.Data(0, y, 0);
-		unsigned char *h1 = iksloophetImage.Data(0, y, 1);
-		unsigned char *h2 = iksloophetImage.Data(0, y, 2);
+		unsigned char *h = editedImage_2.Data(0, y, 0);
+		unsigned char *h1 = editedImage_2.Data(0, y, 1);
+		unsigned char *h2 = editedImage_2.Data(0, y, 2);
 		for (int x = 0; x < image.Width(); x++){
 			*(h + x) = 0;
 			*(h1 + x) = 0;
@@ -191,18 +191,18 @@ void Matrix::Three_Way_Shear(float s){
 			X = x + (-tan(s / 2) * y);
 			Y = y;
 			if (X >= 0 && X < image.Width() && Y >= 0 && Y < image.Height()){
-				*iksloophetImage.Data(X, Y, 0) = *image.Data(x, y, 0);
-				*iksloophetImage.Data(X, Y, 1) = *image.Data(x, y, 1);
-				*iksloophetImage.Data(X, Y, 2) = *image.Data(x, y, 2);
+				*editedImage_2.Data(X, Y, 0) = *image.Data(x, y, 0);
+				*editedImage_2.Data(X, Y, 1) = *image.Data(x, y, 1);
+				*editedImage_2.Data(X, Y, 2) = *image.Data(x, y, 2);
 
 			}
 		}
 	}
 	
 	for (int y = 0; y < image.Height(); y++){
-		unsigned char *e = ikhebhetalgeslooptImage.Data(0, y, 0);
-		unsigned char *e1 = ikhebhetalgeslooptImage.Data(0, y, 1);
-		unsigned char *e2 = ikhebhetalgeslooptImage.Data(0, y, 2);
+		unsigned char *e = editedImage_3.Data(0, y, 0);
+		unsigned char *e1 = editedImage_3.Data(0, y, 1);
+		unsigned char *e2 = editedImage_3.Data(0, y, 2);
 		for (int x = 0; x < image.Width(); x++){
 			*(e + x) = 0;
 			*(e1 + x) = 0;
@@ -216,9 +216,9 @@ void Matrix::Three_Way_Shear(float s){
 			X = x;
 			Y = (sin(s) * x) + y;
 			if (X >= 0 && X < image.Width() && Y >= 0 && Y < image.Height()){
-				*ikhebhetalgeslooptImage.Data(X, Y, 0) = *iksloophetImage.Data(x, y, 0);
-				*ikhebhetalgeslooptImage.Data(X, Y, 1) = *iksloophetImage.Data(x, y, 1);
-				*ikhebhetalgeslooptImage.Data(X, Y, 2) = *iksloophetImage.Data(x, y, 2);
+				*editedImage_3.Data(X, Y, 0) = *editedImage_2.Data(x, y, 0);
+				*editedImage_3.Data(X, Y, 1) = *editedImage_2.Data(x, y, 1);
+				*editedImage_3.Data(X, Y, 2) = *editedImage_2.Data(x, y, 2);
 			}
 		}
 	}
@@ -245,16 +245,16 @@ void Matrix::Three_Way_Shear(float s){
 			float dx = X - a;
 			float dy = Y - b;
 
-			float pRed = *ikhebhetalgeslooptImage.Data(x, y, 0) + (*ikhebhetalgeslooptImage.Data(x - 1, y, 0) - *ikhebhetalgeslooptImage.Data(x, y, 0)) * dx;
-			float qRed = *ikhebhetalgeslooptImage.Data(x, y - 1, 0) + (*ikhebhetalgeslooptImage.Data(x - 1, y - 1, 0) - *ikhebhetalgeslooptImage.Data(x, y - 1, 0)) * dy;
+			float pRed = *editedImage_3.Data(x, y, 0) + (*editedImage_3.Data(x - 1, y, 0) - *editedImage_3.Data(x, y, 0)) * dx;
+			float qRed = *editedImage_3.Data(x, y - 1, 0) + (*editedImage_3.Data(x - 1, y - 1, 0) - *editedImage_3.Data(x, y - 1, 0)) * dy;
 			float fRed = pRed + (qRed - pRed) * dy;
 
-			float pGreen = *ikhebhetalgeslooptImage.Data(x, y, 1) + (*ikhebhetalgeslooptImage.Data(x - 1, y, 1) - *ikhebhetalgeslooptImage.Data(x, y, 1)) * dx;
-			float qGreen = *ikhebhetalgeslooptImage.Data(x, y - 1, 1) + (*ikhebhetalgeslooptImage.Data(x - 1, y - 1, 1) - *ikhebhetalgeslooptImage.Data(x, y - 1, 1)) * dy;
+			float pGreen = *editedImage_3.Data(x, y, 1) + (*editedImage_3.Data(x - 1, y, 1) - *editedImage_3.Data(x, y, 1)) * dx;
+			float qGreen = *editedImage_3.Data(x, y - 1, 1) + (*editedImage_3.Data(x - 1, y - 1, 1) - *editedImage_3.Data(x, y - 1, 1)) * dy;
 			float fGreen = pGreen + (qGreen - pGreen) * dy;
 
-			float pBlue = *ikhebhetalgeslooptImage.Data(x, y, 2) + (*ikhebhetalgeslooptImage.Data(x - 1, y, 2) - *ikhebhetalgeslooptImage.Data(x, y, 2)) * dx;
-			float qBlue = *ikhebhetalgeslooptImage.Data(x, y - 1, 2) + (*ikhebhetalgeslooptImage.Data(x - 1, y - 1, 2) - *ikhebhetalgeslooptImage.Data(x, y - 1, 2)) * dy;
+			float pBlue = *editedImage_3.Data(x, y, 2) + (*editedImage_3.Data(x - 1, y, 2) - *editedImage_3.Data(x, y, 2)) * dx;
+			float qBlue = *editedImage_3.Data(x, y - 1, 2) + (*editedImage_3.Data(x - 1, y - 1, 2) - *editedImage_3.Data(x, y - 1, 2)) * dy;
 			float fBlue = pBlue + (qBlue - pBlue) * dy;
 
 			if (X >= 0 && X < image.Width() && Y >= 0 && Y < image.Height()){
