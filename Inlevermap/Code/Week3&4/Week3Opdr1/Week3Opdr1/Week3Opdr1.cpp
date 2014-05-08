@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 
 	KMeansClustering kmc(image, atoi(argv[2]));
 	kmc.clusterRGB();
-	kmc.getEditedImage().SaveImage("henk.bmp");
+	kmc.getEditedImage().SaveImage("KMeans.bmp");
 	bt.stop();
 	cout << "KMeansClustering in: " << bt.elapsedSeconds() << " seconden\n";
 	system("pause");

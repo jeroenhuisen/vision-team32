@@ -32,12 +32,10 @@ int main(int argc, char* argv[])
 	bt.start();
 	ColorFilter cf(image);
 	cf.makeGrey();
-	image = cf.getEditedImage();
-	image.SaveImage("grey_watchdogs.bmp");
 
 	AutoThreshold autoT(image);
 	autoT.ThresholdCalc();
-	autoT.getEditedImage().SaveImage("hoi.bmp");
+	autoT.getEditedImage().SaveImage("AutoThresHold.bmp");
 
 	bt.stop();
 	cout << "Bestand ingelezen in: " << bt.elapsedSeconds() << " seconden\n";
