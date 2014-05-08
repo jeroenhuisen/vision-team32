@@ -16,8 +16,8 @@ private:
 	*/
 	Image image;
 	Image editedImage;
-	Image iksloophetImage;
-	Image ikhebhetalgeslooptImage;
+	Image editedImage_2;
+	Image editedImage_3;
 
 public:
 	/**
